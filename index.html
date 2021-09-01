@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunday Bite</title>
+    <link rel="shortcut icon" href="./Images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- home div -->
+    <div class="Home" id="Home">
+        <span class="MenuToggler">
+            <i class="bi bi-list"></i>
+        </span>
+        <header>
+            <nav class="Close">
+                <a href="#Home">Home</a>
+                <a href="#About">About</a>
+                <a href="#Menu">OrderNow</a>
+                <a class="Signin LoggedOut anchorTag">Sign In</a>
+                <a class="SignUp LoggedIn anchorTag">Sign Up</a>
+                <a class="anchorTag AccountLink"> Account</a>
+            </nav>
+
+
+        </header>
+        <div class="HomeInfo">
+            <h1>
+                The Sunday Bite
+            </h1>
+
+            <h3>Delicious food for every mood.</h3>
+            <br>
+            <a href="#Menu" class="button" id="OrderBtn">Order Now</a>
+        </div>
+
+        <div class="DisplayImage"></div>
+    </div>
+
+    <!-- Home end --
+
+
+    <!-- About Us -->
+
+    <div class="About" id="About">
+        <div class="DisplayImage"></div>
+        <div class="Content">
+            <h1>All About TSB</h1>
+
+            <p>We have been serving irresistible comfort food since 1999.
+                Our mission is to keep you smiling with every bite.
+            </p>
+
+            <p>Treat yourself to a feel-good meal today!</p>
+
+            <button><a href="#Contact">Learn More</a></button>
+        </div>
+    </div>
+    <!-- end of About Us -->
+
+    <!-- Menu -->
+    <div class="Menu" id="Menu">
+        <div class="MenuHeader">
+            <h2>What We Offer</h2>
+            <h5>Curious? Here are our most popular menu items.</h5>
+            <select list="FoodCategories" name="FoodCategory" id="FoodCategory">
+                <option value="All" selected>All</option>
+                <option value="Drinks">Drinks</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Meat">Meat</option>
+                <option value="Hamburger">Hamburger</option>
+                <option value="Rice">Rice</option>
+            </select>
+        </div>
+        <div class="MenuList">
+            <!-- Sample Items -->
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/IceLemonade.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Ice Lemonade</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/IceLemonade.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Ice Lemonade</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/IceLemonade.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Ice Lemonade</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/PeachBlue.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Peach Blue</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/PeachBlue.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Peach Blue</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/PeachBlue.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Peach Blue</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/PeachBlue.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Peach Blue</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/PeachBlue.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Peach Blue</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+            <div class="MenuItem">
+                <div class="FoodItem">
+                    <img src="./Images/Drinks/PeachBlue.png" alt="FoodItemImage">
+                    <h5 class="ItemTitle">Peach Blue</h5>
+                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                        explicabo.</p>
+                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                </div>
+                <button class="OrderItemBtn">Order</button>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Menu end -->
+
+    <!-- Testimonial -->
+    <div class="Testimonials">
+        <h3>What Our Clients Say?</h3>
+
+        <div class="TestList">
+            <div class="Test">
+                <img src="./Images/Customer1.png" alt="CustomerImage">
+                <div>
+                    <p>
+                        Testimonials are short quotes from people who love your brand. It's a great way to convince
+                        customers to try your services.
+                    </p>
+                    <div class="Stars">
+                        <i class="bi bi-star-fill">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </i><i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="Test">
+                <img src="./Images/Customer2.png" alt="CustomerImage">
+                <div>
+                    <p>
+                        Testimonials are short quotes from people who love your brand. It's a great way to convince
+                        customers to try your services.
+                    </p>
+                    <div class="Stars">
+                        <i class="bi bi-star-fill">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </i><i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="Test">
+                <img src="./Images/Customer3.png" alt="CustomerImage">
+                <div>
+                    <p>
+                        Testimonials are short quotes from people who love your brand. It's a great way to convince
+                        customers to try your services.
+                    </p>
+                    <div class="Stars">
+                        <i class="bi bi-star-fill">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </i><i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- Contact -->
+
+    <div class="Contact" id="Contact">
+        <div class="DisplayImage"></div>
+
+        <div class="ContactInfo">
+            <h1>Contact Us</h1>
+
+           <span>
+            <h4>EMAIL ADDRESS</h4>
+            <a href="mailto:hello@thisbusiness.com" target="_blank">hello@thisbusiness.com</a>
+           </span>
+
+           <span>
+               <h4>Mailing Address</h4>
+               <p>123 Anywhere St. Any City, ST 12345</p>
+           </span>
+
+
+           <span>
+               <h4>Phone Number</h4>
+               <p>(123) 456-7890</p>
+           </span>
+        </div>
+
+
+    </div>
+    <!-- Contact end -->
+
+    <!-- scroll Up -->
+    <span id="ScrollTop"><i class="bi bi-arrow-up-square-fill"></i></span>
+    <script src="app.js"></script>
+</body>
+
+</html>

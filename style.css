@@ -1,0 +1,505 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --redColor:#bc1823;
+    --lightGrey: #efefef;
+    --bigFont: 2.0rem;
+    --normalFont:1.5rem;
+    --buttonTextSize: 1.25rem;
+}
+body{
+    width: 100vw;
+    max-width: 100vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--lightGrey);
+    padding: 0 0.1rem;
+    position: relative;
+    transition: all 1s ease;
+}
+
+button, .button{
+    background-color: #bc1823;
+    color: beige;
+    border: none;
+    outline: none;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1rem auto;
+    font-weight: 600;
+    transition: all 1s ease;
+    font-family: Verdana, sans-serif;
+}
+
+button:hover, .button:hover{
+    background-color: #6e6a6a;
+}
+
+a, .anchorTag{
+    text-decoration: none;
+    transition: all 1s ease;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight:600;
+    padding: 0.75rem;
+    color: var(--redColor);
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.DisplayImage{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    width:450px;
+    height: 400px;
+}
+
+.Home{
+    width: 100%;
+    height: 90vh;
+    padding: 3rem;
+    background: linear-gradient(90deg, var(--lightGrey) 60%, var(--redColor) 70%);  
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#OrderBtn{
+    margin-top: 1rem;
+}
+
+.Home header{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+}
+
+.Home .HomeInfo h1{
+    font-size: var(--bigFont);
+    margin: 1rem auto;
+    text-align: left;
+}
+
+.Home .HomeInfo h3{
+    margin: 0.5rem auto;
+}
+
+.Home .DisplayImage{
+    background-image: url(./Images/meat.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    width:450px;
+    height: 400px;
+    margin: auto;
+}
+
+.About{
+    width: 100%;
+    background-color: var(--lightGrey);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(90deg, rgba(188,24,35,1) 40%, rgba(239,239,239,1) 50%);
+}
+
+.About .DisplayImage{
+    background-image: url(./Images/Hambergur1.png);
+}
+
+.About .Content{
+    padding: 0.5rem;
+    width: 40%;
+    height: 80%;
+}
+
+.About .Content p{
+    font-size: 1.2rem;
+    margin: 0.5rem auto;
+}
+
+.About button a{
+    color: whitesmoke;
+}
+
+.Menu{
+    width: 100%;
+    padding: 1rem 0.5rem;
+    background: rgb(172, 172, 193);
+    background: linear-gradient(45deg, rgb(172, 172, 172) 45%, rgba(188,24,35,1) 48%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Menu .MenuHeader{
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.MenuHeader h2{
+    margin: 0.5rem auto;
+    font-size: 1.5rem;
+    color: var(--lightGrey);
+}
+
+.MenuHeader h5{
+    font-size: 1.2rem;
+    margin: 0.5rem auto;
+    color: var(--lightGrey);
+}
+
+.MenuHeader select{
+    margin: 1rem auto;
+    height: 2rem;
+    border: none;
+    outline: none;
+    width: 15rem;
+    border-radius: 20px;
+    color:var(--redColor);
+    padding: 0.5rem;
+    text-align: center;
+    align-items: center;
+    font-size: 1.0rem;
+    background: var(--lightGrey);
+    font-weight: 700;
+}
+
+select optgroup{
+    background: var(--lightGrey);
+    border-radius: 10px;
+}
+
+.MenuList{
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    align-self: center;
+    justify-content:center;
+}
+
+.MenuItem{
+    width: 18.75rem;
+    height: 25rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    background: rgb(226, 170, 170);
+    background: linear-gradient(0deg, rgba(179, 179, 179, 0.384) 50%, rgba(255,255,255,1) 50%);
+    border: solid 2px whitesmoke;
+    border-radius: 20px;
+}
+
+.Testimonials{
+    width: 100%;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    background: rgb(239,239,239);
+    background: linear-gradient(0deg, rgba(239,239,239,1) 59%, rgba(188,24,35,1) 59%);
+}
+
+.Testimonials h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1rem auto;
+}
+
+.TestList{
+    display: flex;
+    padding: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Test{
+    width: 300px;
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.Test img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    align-items: center;
+    align-self: center;
+}
+
+.Test .Stars{
+    color: gold;
+    margin: 0.5rem auto;
+}
+
+.Contact{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    background: rgb(239,239,239);
+    background: linear-gradient(270deg, rgba(239,239,239,1) 60%, rgba(188,24,35,1) 35%);
+}
+
+.Contact .DisplayImage{
+    background-image: url(./Images/Yummy.png);
+}
+
+.ContactInfo{
+    align-self: center;
+    height: 80%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.ContactInfo h1{
+    margin-bottom: 0.25rem;
+}
+
+.ContactInfo span{
+    width: 100%;
+    margin: 1rem;
+}
+
+.ContactInfo h4{
+    margin: 0.5rem auto;
+}
+
+#ScrollTop{
+    position: fixed;
+    bottom: 3%;
+    left: 90%;
+    color: var(--redColor);
+    font-size: 2rem;
+    cursor: pointer;
+    animation: blink 1s  0.5s infinite alternate ease;
+}
+
+
+@keyframes blink {
+    0%{
+        color: var(--redColor);
+    }
+    50%{
+        color: yellow;
+    }
+    100%{
+        color: var(--redColor);
+    }
+}
+
+
+@media (max-width:600px) {
+    .Home{
+        height: 100vh;
+        padding: 2rem;
+        background: linear-gradient(180deg, var(--lightGrey) 60% var(--redColor) 70%,);  
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Home header{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 0.5rem;
+        height: 10vh;
+        position: relative;
+        /* overflow-x: hidden; */
+    }
+
+
+    nav{
+        width: 95vw;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        align-self: center;
+        align-items: center;
+        background:  rgba(113,4,16,1);
+        z-index: 5;
+        margin-bottom: unset;
+        border-radius: 5px;
+        position: absolute;
+        left: -5%;
+        padding: 1rem;
+        transition: all 1s ease;
+        height: fit-content;
+    }
+
+    nav.Close{
+        display: none;
+        pointer-events: none;
+        z-index: -1;
+        left: -50%;
+        transition: all 1s ease;
+    }
+
+   span.MenuToggler{
+        height: 100%;
+        padding: 0.5rem;
+        position: absolute;
+        top:0;
+        left: 0;
+        cursor: pointer;
+        pointer-events: all;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+
+
+    .MenuToggler i{
+        font-size: 2.0rem;
+        font-weight: 800;
+        color: var(--redColor);
+    }
+
+    nav a{
+        color: var(--lightGrey);
+        padding: 0.5rem;
+    }
+    
+    .Home .HomeInfo h1{
+        font-size: var(--bigFont);
+        margin: 1rem auto;
+        text-align: center;
+    }
+    
+    .Home .HomeInfo h3{
+        margin: 0.5rem auto;
+    }
+    
+    .Home .DisplayImage{
+        background-image: url(./Images/meat.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 2;
+        width:100%;
+        height: 300px;
+        margin: auto;
+    }
+
+    .About{
+        width: 100%;
+        background-color: var(--lightGrey);
+        padding: 1rem;
+        display: flex;
+        flex-direction:column-reverse;
+        align-items: center;
+        justify-content: space-around;
+        background: linear-gradient(180deg,  rgb(236, 236, 236) 50%, rgba(188,24,35,1) 40%);
+    }
+
+    .About .DisplayImage{
+        width: 99vw;
+    }
+    
+    .About .Content{
+        padding: 0.25rem;
+        width: 100%;
+        height: fit-content;
+    }
+    
+    .Menu{
+        width: 100%;
+        padding: 0.5rem 0.25rem;
+        background: rgb(172, 172, 193);
+        background: linear-gradient(45deg, rgb(172, 172, 172) 45%, rgba(188,24,35,1) 48%);
+    }
+    
+    .Menu .MenuHeader{
+        width: 100%;
+        padding: 0.5rem;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+        justify-content: center;
+    }
+
+    .MenuItem{
+        height: fit-content;
+        width: 19.0rem;
+    }
+
+    .Contact{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+        background: rgb(239,239,239);
+        background: linear-gradient(180deg,rgba(188,24,35,1) 50%, rgba(239,239,239,1) 60%);
+    }
+    
+    .Contact .DisplayImage{
+        width: 99vw;
+    }
+    
+    .ContactInfo{
+        align-self: center;
+        height: 80%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .ContactInfo h1{
+        margin-bottom: 0.25rem;
+    }
+    
+    .ContactInfo span{
+        width: 100%;
+        margin: 0.5rem;
+    }
+
+    #ScrollTop{
+        position: fixed;
+        bottom: 5%;
+        left: 80%;
+    }
+    
+}
