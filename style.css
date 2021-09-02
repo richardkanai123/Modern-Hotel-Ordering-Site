@@ -369,6 +369,10 @@ ul{
     color: rgb(6, 6, 116);
 }
 
+.AdminHeader h3 a{
+    color: green;
+}
+
 .AdminBody{
     width: 99%;
     display: flex;
@@ -414,6 +418,75 @@ ul{
 .OrderStatus label{
     font-size: 0.75rem;
 }
+
+.ModalOverlay{
+    position: absolute;
+    top: 10vh;
+    left: 5%;
+    padding: 0.5rem;
+    /* height: fit-content; */
+    width: fit-content;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(107, 107, 107, 0.87);
+}
+
+.ModalOverlay.Close{
+    z-index: -10;
+    display: none;
+}
+#CloseModalBtn{
+    position: absolute;
+    right: 10%;
+    top: 1%;
+    margin-bottom: 1.0rem;
+    cursor: pointer;
+    pointer-events: all;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 0.75rem;
+}
+.ModalContent{
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 3rem;
+}
+
+#SignUpForm,#LogInForm,#MakeAdminForm, #AccountInfo{
+    height: 100%;
+    flex-direction: column;
+    text-align: center;
+    display: none;
+}
+
+#SignUpForm h5,#LogInForm h5, #MakeAdminForm h5, #AccountInfo{
+    margin-bottom:0.5rem ;
+    color: var(--redColor);
+}
+
+#LogInForm input,
+#SignUpForm input,
+#MakeAdminForm input{
+    height: 3rem;
+    margin: 0.5rem auto;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 0.5rem;
+    width: 17rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+
+
+
 /* //////////////////////////////////////////////////small Screens.////////////////////////////////////////////// */
 @media (max-width:600px) {
     .Home{

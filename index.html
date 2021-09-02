@@ -23,9 +23,9 @@
                 <a href="#Home">Home</a>
                 <a href="#About">About</a>
                 <a href="#Menu">OrderNow</a>
-                <a class="Signin LoggedOut anchorTag">Sign In</a>
-                <a class="SignUp LoggedIn anchorTag">Sign Up</a>
-                <a class="anchorTag AccountLink"> Account</a>
+                <a id="SignInTag">Sign In</a>
+                <a id="SignUpTag">Sign Up</a>
+                <a id="AccountTag"> Account</a>
             </nav>
 
 
@@ -220,25 +220,13 @@
     <!-- scroll Up -->
     <span id="ScrollTop"><i class="bi bi-arrow-up-square-fill"></i></span>
 
-    <!-- modal set ups -->
-
-    <!-- <div class="ModalOverlay">
-        <div class="Modal">
-            <span id="CloseModalBtn">
-                <i class="bi bi-x-lg"></i>
-            </span>
-            
-        </div>
-    </div> -->
-    <!-- modals set up end  -->
-
-
-    <!-- admin -->
+    <!-- admin Panel -->
 
     <div class="AdminSection Admin" id="AdminSection">
         <div class="AdminHeader">
             <h1>Admin Panel</h1>
             <h3>Welcome <span class="AdminName">Admin</span> </h3>
+            <h3><a id="AddNewAdminTag">Click to add new Admin</a></h3>
         </div>
 
 
@@ -309,8 +297,60 @@
             </div> -->
         </div>
     </div>
-    <script src="Auth.js"></script>
-    <script src="app.js"></script>
+
+    <!-- end of admin panel -->
+
+
+
+        <!-- modal set ups -->
+        <div class="ModalOverlay Close">
+            <div class="Modal">
+                <span id="CloseModalBtn" class="button">
+                    <i class="bi bi-x-lg"></i>
+                </span>
+                
+                <div class="ModalContent">
+                   <!-- forms are toggled depending on user clicks -->
+                </div>
+            </div>
+        </div>
+        <!-- modals set up end  -->
+
+        <!-- forms -->
+
+        <!-- adds a new user -->
+            <form id="SignUpForm" autocomplete="off">
+                    <h5>Create Account</h5>
+                    <input type="text" name="NewUserName" id="NewUserName" placeholder="Your Name">
+                    <input type="email" name="NewUserEmail" id="NewUserEmail" placeholder="Your email">
+                    <input type="password" name="NewUserPassword" id="NewUserPassword" placeholder="Password">
+                    <button type="submit">Register</button>
+            </form>
+
+        <!-- Log in Existing user -->
+            <form id="LogInForm">
+                <h5>Log in</h5>
+                <input type="email" name="UserEmail" id="UserEmail" placeholder="Your email">
+                <input type="password" name="UserPassword" id="UserPassword" placeholder="Password">
+                <button type="submit">Log In</button>
+            </form>
+
+            <!-- make a user admin only done by admin -->
+            <form id="MakeAdminForm" autocomplete="off">
+                <h5>Make user admin</h5>
+                <input type="email" name="UserEmail" id="NewAdminEmail" placeholder="User email">
+                <button type="submit">Make Admin</button>
+            </form>
+
+            <!-- account information -->
+            <div id="AccountInfo">
+                <h3>Logged in as</h3>
+                <h5 id="MyuserName">Richard</h5>
+                <span>Email: <h5 id="MyUserEmail">my emal....</h5></span>
+                <button id="LogOutBtn">Log Out</button>
+            </div>
+            <script src="Auth.js"></script>
+            <script src="app.js"></script>
 </body>
 
 </html>
