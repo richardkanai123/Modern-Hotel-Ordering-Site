@@ -207,7 +207,7 @@ select optgroup{
 
 .MenuItem{
     width: 18.75rem;
-    height: 25rem;
+    height: 28rem;
     margin: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -219,8 +219,26 @@ select optgroup{
     background: linear-gradient(0deg, rgba(179, 179, 179, 0.384) 50%, rgba(255,255,255,1) 50%);
     border: solid 2px whitesmoke;
     border-radius: 20px;
+    pointer-events: all;
 }
 
+.FoodItem p{
+    margin-bottom: 0.5rerm;
+}
+
+.MenuItem input{
+    width: 20%;
+    height: 2.0rem;
+    padding: 0.5rem;
+    outline: none;
+    text-align: center;
+    color: indianred;
+    border-radius: 3px;
+    background: rgba(64, 224, 208, 0.527);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0.25rem;
+}
 .Testimonials{
     width: 100%;
     padding: 1rem 0.5rem;
@@ -329,6 +347,74 @@ select optgroup{
 }
 
 
+
+ul{
+    list-style: none;
+}
+.AdminSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgb(239,239,239);
+    background: linear-gradient(45deg, rgba(239,239,239,1) 50%, rgba(188,24,35,1) 50%);
+    padding: 3rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.AdminSection .AdminHeader{
+    width: 100%;
+    border: solid blue;
+    color: rgb(6, 6, 116);
+}
+
+.AdminBody{
+    width: 99%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.OrdersDiv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.OrdersDiv h1{
+    color: #69e67a;
+}
+
+
+.OrdersPop{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.OrdersPop .MenuItem{
+    height: 30rem;
+}
+
+
+.OrderStatus{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.OrderStatus input{
+    font-size: 0.75rem;
+    color: green;
+    text-align: center;
+}
+.OrderStatus label{
+    font-size: 0.75rem;
+}
+/* //////////////////////////////////////////////////small Screens.////////////////////////////////////////////// */
 @media (max-width:600px) {
     .Home{
         height: 100vh;
