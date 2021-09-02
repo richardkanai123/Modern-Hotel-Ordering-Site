@@ -76,6 +76,10 @@ a:hover{
     justify-content: space-around;
 }
 
+.Home span.MenuToggler{
+    display: none;
+}
+
 #OrderBtn{
     margin-top: 1rem;
 }
@@ -373,7 +377,8 @@ select optgroup{
         transition: all 1s ease;
     }
 
-   span.MenuToggler{
+   .Home span.MenuToggler{
+       display: inline-block;
         height: 100%;
         padding: 0.5rem;
         position: absolute;
