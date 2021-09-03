@@ -16,11 +16,10 @@ const AccountInfo = document.querySelector("#AccountInfo")
 const ModalOverlay = document.querySelector(".ModalOverlay")
 const AdminSection = document.querySelector("#AdminSection")
 const AddNewAdminTag = document.querySelector("#AddNewAdminTag")
-
+const Nav = document.querySelector("nav")
 // events
 ScrollTopBtn.addEventListener('click', () => {
     window.scrollTo(0, 0)
-    console.log("top");
 })
 
 // place order to admins panel when Order btn is clicked
@@ -29,6 +28,8 @@ window.addEventListener("click", (e) => {
         AddOrderToAdminList(e)
     }
 })
+
+
 
 // menu toggler for phone
 MenuToggler.addEventListener('click', () => {
@@ -75,8 +76,9 @@ function AddOrderToAdminList(e) {
 
     // change text in button to ordered and disable it
     parentItem.querySelector("button").innerText = "Ordered";
-    parentItem.querySelector("button").disabled = true;
     parentItem.querySelector("button").style.pointerEvents = "none";
+    parentItem.querySelector("button").disabled = true;
+    parentItem.querySelector("button").classList.add("LoggedOut");
     parentItem.querySelector("button").style.background = "green";
 
     // sets quantity ordered from use to the item appearing on admin side

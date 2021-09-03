@@ -1,0 +1,135 @@
+// listen for auth status changes
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // user.getIdTokenResult().then(idTokenResult=>{
+        //     user.admin = idTokenResult.claims.admin;
+        //     setupUI(user)
+        // })
+        SetLoggedInUi()
+      console.log('user logged in: ', user);
+      // database access
+        // db.collection('guides').onSnapshot(snapshot => {
+        // setupGuides(snapshot.docs);
+        // })
+    } else {
+      console.log('user logged out', user);
+    //   setupGuides([]);
+    //   setupUI()
+    SetLoggedOutUi()
+    }
+})
+
+
+SignUpForm.addEventListener("submit", (e)=>{
+  e.preventDefault();
+  // get user info
+  const email = SignUpForm['NewUserEmail'].value;
+  const password = SignUpForm['NewUserPassword'].value;
+
+
+      // add new user
+      auth.createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            // console.log(userCredential);
+
+            SignUpForm.reset();
+
+            CloseOpenModal()
+            location.reload()
+          })
+
+        // Handle Errors here.
+          .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+              alert('The password is too weak.');
+            } else {
+              alert(errorMessage);
+            }
+          });
+})
+
+// logging out a logged in user
+const LogOutBtn = document.querySelector("#LogOutBtn")
+LogOutBtn.addEventListener("click",()=>{
+  auth.signOut().then(()=>{
+   
+    
+    CloseOpenModal()
+    alert("Logged Out! Bye!");
+    location.reload()
+  })
+})
+
+// log in current user
+LogInForm.addEventListener("submit",(e)=>{
+  e.preventDefault();
+
+  // get user info to auth logging in
+  const email = LogInForm['UserEmail'].value;
+  const password = LogInForm['UserPassword'].value;
+
+  auth.signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    // console.log(userCredential);
+    alert("Welcome Back")
+
+    CloseOpenModal()
+    location.reload()
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(errorMessage)
+  });
+})
+
+
+
+
+
+// closes currently open modal
+function CloseOpenModal(){
+  setTimeout(
+    function(){
+    ModalOverlay.classList.toggle("Close");
+    },
+  500)
+}
+
+
+
+
+// hides this ui when user is logged in
+function SetLoggedInUi(){
+  // setupUi depending on log state
+const LoggedOutUi = document.querySelectorAll(".UserLoggedOut")
+const LoggedInUi = document.querySelectorAll(".LoggedIn")
+  LoggedOutUi.forEach(element => {
+    element.style.display = 'none';
+  });
+
+  LoggedInUi.forEach(element => {
+    element.style.display = 'All';
+  });
+
+}
+
+// update UI when user logs out
+function SetLoggedOutUi(){
+  const LoggedOutUi = document.querySelectorAll(".UserLoggedOut")
+  const LoggedInUi = document.querySelectorAll(".LoggedIn")
+  LoggedOutUi.forEach(element => {
+    element.style.display = 'all';
+  });
+
+  LoggedInUi.forEach(Ui => {
+    Ui.style.display = 'none';
+  });
+
+}

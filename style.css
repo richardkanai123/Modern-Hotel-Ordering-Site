@@ -353,7 +353,7 @@ ul{
 }
 .AdminSection{
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     background: rgb(239,239,239);
     background: linear-gradient(45deg, rgba(239,239,239,1) 50%, rgba(188,24,35,1) 50%);
