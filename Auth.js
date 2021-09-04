@@ -1,10 +1,40 @@
+// add admin
+MakeAdminForm.addEventListener('submit', (e)=>{
+  e.preventDefault()
+  const adminMail = MakeAdminForm.querySelector("#NewAdminEmail").value
+  console.log(adminMail);
+  // refer to  adminrole function
+    const AddAdminRole = functions.httpsCallable('AddAdminRole');
+    AddAdminRole({email:adminMail}).then(result=>{
+      console.log(result);
+    })
+
+})
+
+
+// get admin items
+const AdminItems = document.querySelector(".AdminSection")
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
     if (user) {
-        // user.getIdTokenResult().then(idTokenResult=>{
-        //     user.admin = idTokenResult.claims.admin;
-        //     setupUI(user)
-        // })
+        user.getIdTokenResult().then(idTokenResult=>{
+            user.admin = idTokenResult.claims.admin; 
+            console.log(user.admin); 
+            if(user.admin){
+              AdminItems.style.display="flex";
+            }
+        })
+        // Create User information
+        db.collection('users').doc(user.uid).get()  
+          .then(doc=>{
+            const UserInfo = `
+            <h3> ${ doc.data().UName}</h3>
+            <span>Email: <h5 id="MyUserEmail">${ doc.data().umail}</h5></span>
+            <div> ${user.admin? 'Admin Account': 'Customer  '} </div>
+            `;
+            document.querySelector(".UserInfoDiv").innerHTML = UserInfo;
+          })
+
         SetLoggedInUi()
       console.log('user logged in: ', user);
       // database access
@@ -12,29 +42,33 @@ auth.onAuthStateChanged(user => {
         // setupGuides(snapshot.docs);
         // })
     } else {
-      console.log('user logged out', user);
-    //   setupGuides([]);
-    //   setupUI()
+      // console.log('user logged out', user);    
     SetLoggedOutUi()
+    document.querySelector(".UserInfoDiv").innerHTML = ``;
     }
 })
 
-
+// sign up a new user
 SignUpForm.addEventListener("submit", (e)=>{
   e.preventDefault();
   // get user info
   const email = SignUpForm['NewUserEmail'].value;
   const password = SignUpForm['NewUserPassword'].value;
-
+  const UserName = SignUpForm['NewUserName'].value;
 
       // add new user
       auth.createUserWithEmailAndPassword(email, password)
           .then((userCredential) => {
             const user = userCredential.user;
             // console.log(userCredential);
+           return db.collection('users').doc(user.uid).set({
+             UName: UserName,
+             umail: email
+           })
 
+          }).then(
+            function(){
             SignUpForm.reset();
-
             CloseOpenModal()
             location.reload()
           })

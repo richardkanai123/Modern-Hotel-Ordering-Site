@@ -223,7 +223,7 @@
 
     <!-- admin Panel -->
 
-    <div class="AdminSection Admin" id="AdminSection">
+    <div class="AdminSection" id="AdminSection">
         <div class="AdminHeader">
             <h1>Admin Panel</h1>
             <h3>Welcome <span class="AdminName">Admin</span> </h3>
@@ -339,15 +339,18 @@
             <!-- make a user admin only done by admin -->
             <form id="MakeAdminForm" autocomplete="off">
                 <h5>Make user admin</h5>
-                <input type="email" name="UserEmail" id="NewAdminEmail" placeholder="User email">
+                <input type="email" name="NewAdminEmail" id="NewAdminEmail" placeholder="User email">
                 <button type="submit">Make Admin</button>
             </form>
 
             <!-- account information -->
             <div id="AccountInfo">
                 <h3>Logged in as</h3>
-                <h5 id="MyuserName">Richard</h5>
+                <div class="UserInfoDiv">
+                    <!-- <h5 id="MyuserName">Richard</h5>
                 <span>Email: <h5 id="MyUserEmail">my emal....</h5></span>
+ -->
+                </div>
                 <form>
                     <button type="submit" id="LogOutBtn">Log Out</button>
                 </form>
@@ -358,6 +361,7 @@
             <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
             <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
             <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
             <script>
                 // Your web app's Firebase configuration
                 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -375,6 +379,7 @@
             
                 const auth = firebase.auth();
                 const db = firebase.firestore();
+                const functions = firebase.functions();
             </script>      
             <script src="Auth.js"></script>
             <script src="app.js"></script>
