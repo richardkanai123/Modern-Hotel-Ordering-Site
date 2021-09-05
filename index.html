@@ -14,7 +14,7 @@
 <body>
 
     <!-- home div -->
-    <div class="Home" id="Home">
+    <div class="Home NonAdmin" id="Home">
         <span class="MenuToggler">
             <i class="bi bi-list"></i>
         </span>
@@ -22,10 +22,10 @@
             <nav class="Close">
                 <a href="#Home">Home</a>
                 <a href="#About">About</a>
-                <a href="#Menu" class="UserLoggedOut">Menu</a>
                 <a href="#Menu" class="LoggedIn">OrderNow</a>
                 <a id="SignInTag" class="UserLoggedOut">Sign In</a>
                 <a id="SignUpTag" class="UserLoggedOut">Sign Up</a>
+                <a id="MyOrders" class="LoggedIn"> My Orders</a>
                 <a id="AccountTag" class="LoggedIn"> Account</a>
             </nav>
 
@@ -49,7 +49,7 @@
 
     <!-- About Us -->
 
-    <div class="About" id="About">
+    <div class="About NonAdmin" id="About">
         <div class="DisplayImage"></div>
         <div class="Content">
             <h1>All About TSB</h1>
@@ -66,7 +66,7 @@
     <!-- end of About Us -->
 
     <!-- Menu -->
-    <div class="Menu" id="Menu">
+    <div class="Menu NonAdmin" id="Menu">
         <div class="MenuHeader">
             <h2>What We Offer</h2>
             <h5>Curious? Here are our most popular menu items.</h5>
@@ -131,7 +131,7 @@
     <!-- Menu end -->
 
     <!-- Testimonial -->
-    <div class="Testimonials">
+    <div class="Testimonials NonAdmin">
         <h3>What Our Clients Say?</h3>
 
         <div class="TestList">
@@ -191,27 +191,27 @@
 
     <!-- Contact -->
 
-    <div class="Contact" id="Contact">
+    <div class="Contact NonAdmin" id="Contact">
         <div class="DisplayImage"></div>
 
         <div class="ContactInfo">
             <h1>Contact Us</h1>
 
-           <span>
-            <h4>EMAIL ADDRESS</h4>
-            <a href="mailto:hello@thisbusiness.com" target="_blank">hello@thisbusiness.com</a>
-           </span>
+            <span>
+                <h4>EMAIL ADDRESS</h4>
+                <a href="mailto:hello@thisbusiness.com" target="_blank">hello@thisbusiness.com</a>
+            </span>
 
-           <span>
-               <h4>Mailing Address</h4>
-               <p>123 Anywhere St. Any City, ST 12345</p>
-           </span>
+            <span>
+                <h4>Mailing Address</h4>
+                <p>123 Anywhere St. Any City, ST 12345</p>
+            </span>
 
 
-           <span>
-               <h4>Phone Number</h4>
-               <p>(123) 456-7890</p>
-           </span>
+            <span>
+                <h4>Phone Number</h4>
+                <p>(123) 456-7890</p>
+            </span>
         </div>
 
 
@@ -224,168 +224,240 @@
     <!-- admin Panel -->
 
     <div class="AdminSection" id="AdminSection">
-        <div class="AdminHeader">
-            <h1>Admin Panel</h1>
-            <h3>Welcome <span class="AdminName">Admin</span> </h3>
-            <h3><a id="AddNewAdminTag">Click to add new Admin</a></h3>
+
+        <div class="PanelHeader">
+            <h2>Admin Panel</h2>
+        </div>
+        <!-- admin control panel -->
+        <div class="AdminNavigation">
+            <h3>Navigation</h3>
+            <a id="OrdersView" class="button link" href="#OrdersPop">Orders</a>
+            <a id="CompletedOrders" class="button link">Completed Orders</a>
+            <a id="ViewMealsTag" href="#AllMeals" class="button link">All Meals</a>
+            <a id="AddNewMealTag" class="button link">Add New Meal</a>
+            <a id="AddNewAdminTag" class="button link">Add New Admin</a>
+            <button type="submit" id="LogOutBtn">Log Out</button>
         </div>
 
 
-        <div class="AdminBody">
-            <div class="OrdersDiv">
-                <h1>Orders List</h1>
-                <div class="OrdersPop">
+       <div class="AdminItemsHolder">
 
-                    <!-- sample order
-                    <div class="MenuItem">
-                        <div class="FoodItem">
-                            <img src="./Images/Drinks/IceLemonade.png" alt="FoodItemImage">
-                            <h5 class="ItemTitle">Ice Lemonade</h5>
-                            <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                                explicabo.</p>
-                            <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                        </div>
-                        <button class="OrderItemBtn">Order</button>
+            <!-- orders placed by customers -->
+            <div class="OrdersPop" id="OrdersPop">
+                <!-- <h3>Customer Orders</h3> -->
 
-                        <div class="OrderStatus">
-                            <input type="radio" id="Received" name="OrderStatusChoice" value="Received">
-                              <label for="Received">Received</label>
-                              <input type="radio" id="Preparing" name="OrderStatusChoice" value="Preparing">
-                              <label for="Preparing">Preparing</label>
-                              <input type="radio" id="Ready" name="OrderStatusChoice" value="Ready">
-                              <label for="Ready">Ready</label>    
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
 
-                            <button id="ArchiveOrder">
-                                Close
-                            </button>
-                        </div>
-                        
-                    </div> -->
-                    
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+
+            <!-- all meals in the hotel -->
+
+
+            <div class="AllMeals" id="AllMeals">
+                <!-- gets data for all available meals -->
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/OrangeMint1.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/OrangeMint1.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/OrangeMint1.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+                <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
+                </div>
+
+                            <div class="MenuItem">
+                    <div class="FoodItem">
+                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
+                        <h5 class="ItemTitle">Ice Lemonade</h5>
+                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
+                            explicabo.</p>
+                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    </div>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
                 </div>
             </div>
-            <!-- <div class="FoodItemsTable">
-                <ul class="FoodItemsList">
-                    <li>
-                        <h4>Chicken Curry</h4>
-                        <select list="FoodAvailabity" name="FoodAvailabity" id="FoodAvailability">
-                            <option value="Available" selected>Avail</option>
-                            <option value="Not Available">NA</option>
-                        </select>
-                    </li>
-                    <li>
-                        <h4>Chicken Curry</h4>
-                        <select list="FoodAvailabity" name="FoodAvailabity" id="FoodAvailability">
-                            <option value="Available" selected>Avail</option>
-                            <option value="Not Available">NA</option>
-                        </select>
-                    </li>
-                    <li>
-                        <h4>Chicken Curry</h4>
-                        <select list="FoodAvailabity" name="FoodAvailabity" id="FoodAvailability">
-                            <option value="Available" selected>Avail</option>
-                            <option value="Not Available">NA</option>
-                        </select>
-                    </li>
-                    <li>
-                        <h4>Chicken Curry</h4>
-                        <select list="FoodAvailabity" name="FoodAvailabity" id="FoodAvailability">
-                            <option value="Available" selected>Avail</option>
-                            <option value="Not Available">NA</option>
-                        </select>
-                    </li>
-                </ul>
-            </div> -->
-        </div>
+
+
+            </div>
+       </div>
+
     </div>
 
     <!-- end of admin panel -->
 
 
 
-        <!-- modal set ups -->
-        <div class="ModalOverlay Close">
-            <div class="Modal">
-                <span id="CloseModalBtn" class="button">
-                    <i class="bi bi-x-lg"></i>
-                </span>
-                
-                <div class="ModalContent">
-                   <!-- forms are toggled depending on user clicks -->
-                </div>
+    <!-- modal set ups -->
+    <div class="ModalOverlay Close">
+        <div class="Modal">
+            <span id="CloseModalBtn" class="button">
+                <i class="bi bi-x-lg"></i>
+            </span>
+
+            <div class="ModalContent">
+                <!-- forms are toggled depending on user clicks -->
             </div>
         </div>
-        <!-- modals set up end  -->
+    </div>
+    <!-- modals set up end  -->
 
-        <!-- forms -->
+    <!-- forms -->
 
-        <!-- adds a new user -->
-            <form id="SignUpForm" autocomplete="off">
-                    <h5>Create Account</h5>
-                    <input type="text" name="NewUserName" id="NewUserName" placeholder="Your Name">
-                    <input type="email" name="NewUserEmail" id="NewUserEmail" placeholder="Your email" required>
-                    <input type="password" name="NewUserPassword" id="NewUserPassword" placeholder="Password" required>
-                    <button type="submit">Register</button>
-            </form>
+    <!-- adds a new user -->
+    <form id="SignUpForm" autocomplete="off">
+        <h5>Create Account</h5>
+        <input type="text" name="NewUserName" id="NewUserName" placeholder="Your Name">
+        <input type="email" name="NewUserEmail" id="NewUserEmail" placeholder="Your email" required>
+        <input type="password" name="NewUserPassword" id="NewUserPassword" placeholder="Password" required>
+        <button type="submit">Register</button>
+    </form>
 
-        <!-- Log in Existing user -->
-            <form id="LogInForm" autocomplete="off">
-                <h5>Log in</h5>
-                <input type="email" name="UserEmail" id="UserEmail" placeholder="Your email">
-                <input type="password" name="UserPassword" id="UserPassword" placeholder="Password">
-                <button type="submit">Log In</button>
-            </form>
+    <!-- Log in Existing user -->
+    <form id="LogInForm" autocomplete="off">
+        <h5>Log in</h5>
+        <input type="email" name="UserEmail" id="UserEmail" placeholder="Your email">
+        <input type="password" name="UserPassword" id="UserPassword" placeholder="Password">
+        <button type="submit">Log In</button>
+    </form>
 
-            <!-- make a user admin only done by admin -->
-            <form id="MakeAdminForm" autocomplete="off">
-                <h5>Make user admin</h5>
-                <input type="email" name="NewAdminEmail" id="NewAdminEmail" placeholder="User email">
-                <button type="submit">Make Admin</button>
-            </form>
+    <!-- make a user admin only done by admin -->
+    <form id="MakeAdminForm" autocomplete="off">
+        <h5>Make user admin</h5>
+        <input type="email" name="NewAdminEmail" id="NewAdminEmail" placeholder="User email">
+        <button type="submit">Make Admin</button>
+    </form>
 
-            <!-- account information -->
-            <div id="AccountInfo">
-                <h3>Logged in as</h3>
-                <div class="UserInfoDiv">
-                    <!-- <h5 id="MyuserName">Richard</h5>
-                <span>Email: <h5 id="MyUserEmail">my emal....</h5></span>
- -->
-                </div>
-                <form>
-                    <button type="submit" id="LogOutBtn">Log Out</button>
-                </form>
-            </div>
-
-
-            <!-- firebase -->
-            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
-            <script>
-                // Your web app's Firebase configuration
-                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-               // Your web app's Firebase configuration
-                    const firebaseConfig = {
-                    apiKey: "AIzaSyC1S4x2rR8fus98-N9Xtj8gC80vBGSeS44",
-                    authDomain: "sundaybitesite.firebaseapp.com",
-                    projectId: "sundaybitesite",
-                    storageBucket: "sundaybitesite.appspot.com",
-                    messagingSenderId: "279876722895",
-                    appId: "1:279876722895:web:eae025d53231a243e717ba"
-                    };
-                // Initialize Firebase
-                firebase.initializeApp(firebaseConfig);
-            
-                const auth = firebase.auth();
-                const db = firebase.firestore();
-                const functions = firebase.functions();
-            </script>      
-            <script src="Auth.js"></script>
-            <script src="app.js"></script>
+    <!-- account information -->
+    <div id="AccountInfo">
+        <h3>Logged in as</h3>
+        <div class="UserInfoDiv">
+            <!-- <h5 id="MyuserName">Richard</h5>
+                <span>Email: <h5 id="MyUserEmail">my emal....</h5></span>-->
+        </div>
+        <form>
+            <button type="submit" id="LogOutBtn">Log Out</button>
+        </form>
+    </div>
 
 
-    
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC1S4x2rR8fus98-N9Xtj8gC80vBGSeS44",
+            authDomain: "sundaybitesite.firebaseapp.com",
+            projectId: "sundaybitesite",
+            storageBucket: "sundaybitesite.appspot.com",
+            messagingSenderId: "279876722895",
+            appId: "1:279876722895:web:eae025d53231a243e717ba"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const functions = firebase.functions();
+    </script>
+    <script src="Auth.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

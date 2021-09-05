@@ -22,6 +22,9 @@ auth.onAuthStateChanged(user => {
             console.log(user.admin); 
             if(user.admin){
               AdminItems.style.display="flex";
+              NonAdminDivs.forEach(div=>{
+                div.style.display = "none"
+              })
             }
         })
         // Create User information
@@ -87,8 +90,9 @@ SignUpForm.addEventListener("submit", (e)=>{
 })
 
 // logging out a logged in user
-const LogOutBtn = document.querySelector("#LogOutBtn")
-LogOutBtn.addEventListener("click",()=>{
+const LogOutBtn = document.querySelectorAll("#LogOutBtn")
+LogOutBtn.forEach(btn=>{
+  btn.addEventListener("click",()=>{
   auth.signOut().then(()=>{
    
     
@@ -97,7 +101,7 @@ LogOutBtn.addEventListener("click",()=>{
     location.reload()
   })
 })
-
+})
 // log in current user
 LogInForm.addEventListener("submit",(e)=>{
   e.preventDefault();
