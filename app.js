@@ -18,6 +18,8 @@ const AdminSection = document.querySelector("#AdminSection")
 const AddNewAdminTag = document.querySelector("#AddNewAdminTag")
 const Nav = document.querySelector("nav")
 const NonAdminDivs = document.querySelectorAll(".NonAdmin")
+const AddNewMealForm = document.querySelector("#AddNewMealForm")
+const AddNewMealTag = document.querySelector("#AddNewMealTag")
 
 // events
 ScrollTopBtn.addEventListener('click', () => {
@@ -62,7 +64,7 @@ CreateModalContent(SignUpTag, SignUpForm)
 CreateModalContent(SignInTag, LogInForm)
 CreateModalContent(AccountTag, AccountInfo)
 CreateModalContent(AddNewAdminTag, MakeAdminForm)
-
+CreateModalContent(AddNewMealTag, AddNewMealForm)
 
 
 

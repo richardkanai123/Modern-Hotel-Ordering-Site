@@ -422,8 +422,8 @@ ul{
     width: 80%;
     background: #33333323;
     padding: 0.25rem;
-    height: 100vh;
-    overflow: scroll;
+    /* height: 100vh; */
+    /* overflow: scroll; */
 }
 
 .AllMeals{
@@ -478,21 +478,23 @@ ul{
     margin-top: 3rem;
 }
 
-#SignUpForm,#LogInForm,#MakeAdminForm, #AccountInfo{
+#SignUpForm,#LogInForm,#MakeAdminForm, #AccountInfo, #AddNewMealForm{
     height: 100%;
     flex-direction: column;
     text-align: center;
     display: none;
 }
 
-#SignUpForm h5,#LogInForm h5, #MakeAdminForm h5, #AccountInfo{
+#SignUpForm h5,#LogInForm h5, #MakeAdminForm h5, #AccountInfo h5{
     margin-bottom:0.5rem ;
     color: var(--redColor);
 }
 
 #LogInForm input,
 #SignUpForm input,
-#MakeAdminForm input{
+#MakeAdminForm input,
+#AddNewMealForm input,
+#AddNewMealForm select{
     height: 3rem;
     margin: 0.5rem auto;
     border: none;

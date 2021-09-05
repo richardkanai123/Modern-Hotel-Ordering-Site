@@ -234,7 +234,7 @@
             <a id="OrdersView" class="button link" href="#OrdersPop">Orders</a>
             <a id="CompletedOrders" class="button link">Completed Orders</a>
             <a id="ViewMealsTag" href="#AllMeals" class="button link">All Meals</a>
-            <a id="AddNewMealTag" class="button link">Add New Meal</a>
+            <a id="AddNewMealTag" href="#AddNewMealForm" class="button link">Add New Meal</a>
             <a id="AddNewAdminTag" class="button link">Add New Admin</a>
             <button type="submit" id="LogOutBtn">Log Out</button>
         </div>
@@ -306,10 +306,10 @@
                     <button class="OrderItemBtn">Order</button>
                 </div>
 
-            <!-- all meals in the hotel -->
+                <!-- all meals in the hotel -->
 
 
-            <div class="AllMeals" id="AllMeals">
+                <div class="AllMeals" id="AllMeals">
                 <!-- gets data for all available meals -->
                 <div class="MenuItem">
                     <div class="FoodItem">
@@ -356,7 +356,7 @@
                     <button class="OrderItemBtn">Order</button>
                 </div>
 
-                            <div class="MenuItem">
+                <div class="MenuItem">
                     <div class="FoodItem">
                         <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
                         <h5 class="ItemTitle">Ice Lemonade</h5>
@@ -369,8 +369,22 @@
                 </div>
             </div>
 
+            <!-- Add  a meal form -->
 
-            </div>
+            <form id="AddNewMealForm">
+                <input type="text" placeholder="EnterMealName" id="MealName" name="MealName">
+                <input type="text" name="PicName" id="PicName" placeholder="Meal photo Name">
+                <input type="text" name="MealDescription" id="MealDescription" placeholder="Meal Description">
+                <input type="number" name="UnitPrice" id="UnitPrice" placeholder="Price per unit">
+                <select name="MealCategory" id="MealCategory">
+                    <option value="Burger">Burger</option>
+                    <option value="Rice">Rice</option>
+                    <option value="Drinks">Drinks</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Meat">Meat</option>
+                </select>
+                <button type="submit">Add New</button>
+            </form>
        </div>
 
     </div>
