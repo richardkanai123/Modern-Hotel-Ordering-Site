@@ -56,6 +56,7 @@ function CreateModalContent(tag, Content){
         ModalContentDiv.appendChild(Content)
         Content.style.display = "flex"
         ModalOverlay.append(ModalContentDiv)
+        document.querySelector('body').appendChild(ModalOverlay)
         ModalOverlay.classList.toggle("Close")
     })
 }
