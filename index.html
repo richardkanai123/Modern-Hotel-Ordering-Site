@@ -70,61 +70,30 @@
         <div class="MenuHeader">
             <h2>What We Offer</h2>
             <h5>Curious? Here are our most popular menu items.</h5>
-            <select list="FoodCategories" name="FoodCategory" id="FoodCategory">
+            <select list="FoodCategories" name="FoodCategory" id="FoodCategory" onchange="SortMenu()">
                 <option value="All" selected>All</option>
                 <option value="Drinks">Drinks</option>
                 <option value="Pizza">Pizza</option>
                 <option value="Meat">Meat</option>
-                <option value="Hamburger">Hamburger</option>
+                <option value="Burger">Hamburger</option>
                 <option value="Rice">Rice</option>
             </select>
         </div>
         <div class="MenuList">
             <!-- Sample Items -->
-            <div class="MenuItem">
+
+            <!-- <a class="button" href="#Home"> Log In To see Menu</a> -->
+            <!-- <div class="MenuItem">
+                <img src="./Images/Drinks/Peach Blue.png" alt="FoodItemImage">
                 <div class="FoodItem">
-                    <img src="./Images/Drinks/IceLemonade.png" alt="FoodItemImage">
                     <h5 class="ItemTitle">Ice Lemonade</h5>
                     <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
                         explicabo.</p>
                     <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
+                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+                    <button class="OrderItemBtn">Order</button>
                 </div>
-                <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                <button class="OrderItemBtn">Order</button>
-            </div>
-            <div class="MenuItem">
-                <div class="FoodItem">
-                    <img src="./Images/Drinks/OrangeMint1.png" alt="FoodItemImage">
-                    <h5 class="ItemTitle">Ice Lemonade</h5>
-                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                        explicabo.</p>
-                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                </div>
-                <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                <button class="OrderItemBtn">Order</button>
-            </div>
-            <div class="MenuItem">
-                <div class="FoodItem">
-                    <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
-                    <h5 class="ItemTitle">Ice Lemonade</h5>
-                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                        explicabo.</p>
-                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                </div>
-                <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                <button class="OrderItemBtn">Order</button>
-            </div>
-            <div class="MenuItem">
-                <div class="FoodItem">
-                    <img src="./Images/Drinks/OrangeCocktail.png" alt="FoodItemImage">
-                    <h5 class="ItemTitle">Ice Lemonade</h5>
-                    <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                        explicabo.</p>
-                    <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                </div>
-                <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                <button class="OrderItemBtn">Order</button>
-            </div>
+            </div> -->
         </div>
 
     </div>
@@ -246,7 +215,7 @@
             <div class="OrdersPop" id="OrdersPop">
                 <!-- <h3>Customer Orders</h3> -->
 
-                <div class="MenuItem">
+                <!-- <div class="MenuItem">
                     <div class="FoodItem">
                         <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
                         <h5 class="ItemTitle">Ice Lemonade</h5>
@@ -256,127 +225,26 @@
                     </div>
                     <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
                     <button class="OrderItemBtn">Order</button>
-                </div>
+                </div> -->
 
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-
-                <!-- all meals in the hotel -->
+            </div>
+                
+            <!-- all meals in the hotel -->
 
 
-                <div class="AllMeals" id="AllMeals">
+            <div class="AllMeals" id="AllMeals">
                 <!-- gets data for all available meals -->
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/OrangeMint1.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/OrangeMint1.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/OrangeMint1.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
-
-                <div class="MenuItem">
-                    <div class="FoodItem">
-                        <img src="./Images/Drinks/PurpleCocktail.png" alt="FoodItemImage">
-                        <h5 class="ItemTitle">Ice Lemonade</h5>
-                        <p id="FoodItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-                            explicabo.</p>
-                        <p class="Cost">Ksh.<span class="FoodItemCost">1200</span> </p>
-                    </div>
-                    <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
-                    <button class="OrderItemBtn">Order</button>
-                </div>
             </div>
 
             <!-- Add  a meal form -->
 
             <form id="AddNewMealForm">
-                <input type="text" placeholder="EnterMealName" id="MealName" name="MealName">
-                <input type="text" name="PicName" id="PicName" placeholder="Meal photo Name">
-                <input type="text" name="MealDescription" id="MealDescription" placeholder="Meal Description">
-                <input type="number" name="UnitPrice" id="UnitPrice" placeholder="Price per unit">
-                <select name="MealCategory" id="MealCategory">
+                <h3>New Meal Entry</h3>
+                <input type="file" name="MealPic" id="MealPic" accept="image/*" required>
+                <input type="text" placeholder="EnterMealName" id="MealName" name="MealName" required>
+                <input type="text" name="MealDescription" id="MealDescription" placeholder="Meal Description" required>
+                <input type="number" name="UnitPrice" id="UnitPrice" placeholder="Price per unit" required>
+                <select name="MealCategory" id="MealCategory" required>
                     <option value="Burger">Burger</option>
                     <option value="Rice">Rice</option>
                     <option value="Drinks">Drinks</option>
@@ -412,7 +280,7 @@
     <!-- adds a new user -->
     <form id="SignUpForm" autocomplete="off">
         <h5>Create Account</h5>
-        <input type="text" name="NewUserName" id="NewUserName" placeholder="Your Name">
+        <input type="text" name="NewUserName" id="NewUserName" placeholder="Your Name" required>
         <input type="email" name="NewUserEmail" id="NewUserEmail" placeholder="Your email" required>
         <input type="password" name="NewUserPassword" id="NewUserPassword" placeholder="Password" required>
         <button type="submit">Register</button>
@@ -451,6 +319,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -458,6 +327,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyC1S4x2rR8fus98-N9Xtj8gC80vBGSeS44",
             authDomain: "sundaybitesite.firebaseapp.com",
+            databaseURL: "https://sundaybitesite-default-rtdb.firebaseio.com",
             projectId: "sundaybitesite",
             storageBucket: "sundaybitesite.appspot.com",
             messagingSenderId: "279876722895",
@@ -469,6 +339,10 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
         const functions = firebase.functions();
+        const storage = firebase.storage();
+        const storageRef = storage.ref();
+        const Imageref = storageRef.child('images')
+         
     </script>
     <script src="Auth.js"></script>
     <script src="app.js"></script>

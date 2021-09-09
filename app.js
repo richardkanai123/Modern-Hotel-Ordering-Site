@@ -16,10 +16,10 @@ const AccountInfo = document.querySelector("#AccountInfo")
 const ModalOverlay = document.querySelector(".ModalOverlay")
 const AdminSection = document.querySelector("#AdminSection")
 const AddNewAdminTag = document.querySelector("#AddNewAdminTag")
-const Nav = document.querySelector("nav")
 const NonAdminDivs = document.querySelectorAll(".NonAdmin")
 const AddNewMealForm = document.querySelector("#AddNewMealForm")
 const AddNewMealTag = document.querySelector("#AddNewMealTag")
+const MenuList = document.querySelector(".MenuList")
 
 // events
 ScrollTopBtn.addEventListener('click', () => {
@@ -69,7 +69,47 @@ CreateModalContent(AddNewMealTag, AddNewMealForm)
 
 
 
+// get data from firestore to get available meals
+db.collection('Meals').where("Status", "==", "Available").get()
+    .then(snapshot=>{
+    createMenuItem(snapshot.docs)
+})
+   
+// create a menu item
+const createMenuItem =(data)=>{
+    MenuList.innerHTML = "";
+    data.forEach(doc => {
+        const AvailableFood = doc.data()
+        const NewMenuItem = document.createElement("div")
+        NewMenuItem.classList.add("MenuItem")
+        const NeWFoodItem = document.createElement("div")
+        NeWFoodItem.classList.add("FoodItem")
+        const FoodImage = document.createElement("img")
+    
+        // image
+        const ImPic = Imageref.child(`${AvailableFood.Name}`)
+        ImPic.getDownloadURL()
+        .then((url)=>{
+            FoodImage.src = url;
+        })
+        NewMenuItem.appendChild(FoodImage)
+    
+         NeWFoodItem.innerHTML=  `
+         <h5 class="ItemTitle">${AvailableFood.Name}</h5>
+         <p id="FoodItemDescription">${AvailableFood.Description}</p>
+         <p class="Cost">Ksh.<span class="FoodItemCost">${AvailableFood.UnitPrice}</span> </p>
+         <input type="number" placeholder="1" min="1" name="Quantity" id="Quantity">
+         <button class="OrderItemBtn">Order</button>
+        `
+    
+        // append food item to Menu item
+        NewMenuItem.appendChild(NeWFoodItem)
+    
+        // append meu item to menu list
+        MenuList.appendChild(NewMenuItem)
+    });
 
+}
 
 
 // Functions
@@ -122,11 +162,50 @@ function AddOrderToAdminList(e) {
 }
 
 
-// remove completed order from Admin Panel
-window.addEventListener("click", (e) => {
-    if (e.target.id === "ArchiveOrder") {
-        let ParentMenu = e.target.parentElement.parentElement;
-        console.log(ParentMenu);
-        ParentMenu.remove();
+
+// filter menu depending on the user choice
+
+function SortMenu(){
+    const FoodCategoryOption = document.querySelector("#FoodCategory")
+    MenuList.innerHTML = "";
+    if(FoodCategoryOption.value==="All"){
+        db.collection('Meals').where("Status", "==", "Available").get()
+        .then(snapshot=>{
+            createMenuItem(snapshot.docs)
+        })
+    }else if(FoodCategoryOption.value==="Drinks"){
+        db.collection('Meals').where("Category", "==", "Drinks").get()
+        .then(snapshot=>{
+            createMenuItem(snapshot.docs)
+        })
+    } else if(FoodCategoryOption.value==="Pizza"){
+        db.collection('Meals').where("Category", "==", "Pizza").get()
+        .then(snapshot=>{
+            createMenuItem(snapshot.docs)
+        })
+    }else if(FoodCategoryOption.value==="Meat"){
+        db.collection('Meals').where("Category", "==", "Meat").get()
+        .then(snapshot=>{
+            createMenuItem(snapshot.docs)
+        })
+    }else if(FoodCategoryOption.value==="Burger"){
+        db.collection('Meals').where("Category", "==", "Burger").get()
+        .then(snapshot=>{
+            createMenuItem(snapshot.docs)
+        })
+    }else if(FoodCategoryOption.value==="Rice"){
+        db.collection('Meals').where("Category", "==", "Rice").get()
+        .then(snapshot=>{
+            createMenuItem(snapshot.docs)
+        })
     }
-})
+}
+
+// remove completed order from Admin Panel
+// window.addEventListener("click", (e) => {
+//     if (e.target.id === "ArchiveOrder") {
+//         let ParentMenu = e.target.parentElement.parentElement;
+//         console.log(ParentMenu);
+//         ParentMenu.remove();
+//     }
+// })
