@@ -453,6 +453,7 @@ ul{
     background: rgba(107, 107, 107, 0.87);
 }
 
+
 .ModalOverlay.Close{
     z-index: -10;
     display: none;
@@ -494,7 +495,8 @@ ul{
 #SignUpForm input,
 #MakeAdminForm input,
 #AddNewMealForm input,
-#AddNewMealForm select{
+#AddNewMealForm select,
+.AllMeals select{
     height: 3rem;
     margin: 0.5rem auto;
     border: none;
@@ -506,9 +508,35 @@ ul{
     font-size: 1.2rem;
 }
 
+.MyOrders{
+    align-self: center;
+    width: 80vw;
+    margin: auto;
+    /* border: solid red; */
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--redColor);
+    padding:0.25rem;
+}
+
+.MyOrders .MyOrdersHeader{
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align:center;
+    border-bottom: 2px solid black; 
+}
 
 
+.MyOrders .MenuItem{
+    height: fit-content;
+}
 
+.MyOrders button i{
+    pointer-events: none;
+    font-size: 1.2rem;
+}
 /* //////////////////////////////////////////////////small Screens.////////////////////////////////////////////// */
 @media (max-width:600px) {
     .Home{

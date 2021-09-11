@@ -1,18 +1,3 @@
-// add admin
-MakeAdminForm.addEventListener('submit', (e)=>{
-  e.preventDefault()
-  const adminMail = MakeAdminForm.querySelector("#NewAdminEmail").value
-  console.log(adminMail);
-  // refer to  adminrole function
-    const AddAdminRole = functions.httpsCallable('AddAdminRole');
-    AddAdminRole({email:adminMail}).then(result=>{
-      console.log(result);
-    })
-
-})
-
-
-// console.log(imagesRef.fullPath);
 
 // get admin items
 const AdminItems = document.querySelector(".AdminSection")
@@ -33,14 +18,15 @@ auth.onAuthStateChanged(user => {
         db.collection('users').doc(user.uid).get()  
           .then(doc=>{
             const UserInfo = `
-            <h3> ${ doc.data().UName}</h3>
-            <span>Email: <h5 id="MyUserEmail">${ doc.data().umail}</h5></span>
+            <h3> ${doc.data().UName}</h3>
+            <span>Email: <h5 id="MyUserEmail">${doc.data().umail}</h5></span>
             <div> ${user.admin? 'Admin Account': 'Customer  '} </div>
             `;
             document.querySelector(".UserInfoDiv").innerHTML = UserInfo;
           })
 
         SetLoggedInUi()
+        UpdateCart();
       // console.log('user logged in: ', user);
       // database access
         // db.collection('guides').onSnapshot(snapshot => {
@@ -51,6 +37,21 @@ auth.onAuthStateChanged(user => {
     SetLoggedOutUi()
     document.querySelector(".UserInfoDiv").innerHTML = ``;
     }
+})
+
+
+
+// add admin
+MakeAdminForm.addEventListener('submit', (e)=>{
+  e.preventDefault()
+  const adminMail = MakeAdminForm.querySelector("#NewAdminEmail").value
+  console.log(adminMail);
+  // refer to  adminrole function
+    const AddAdminRole = functions.httpsCallable('AddAdminRole');
+    AddAdminRole({email:adminMail}).then(result=>{
+      console.log(result);
+    })
+
 })
 
 // sign up a new user
