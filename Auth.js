@@ -210,14 +210,14 @@ AddNewMealForm.addEventListener('submit',(e)=>{
   })
 
 
-// set up meals as gotten from Meals Collection
+// set up meals as gotten from Meals Collection and sets them up on admin panel
 function GetMeals(array){
   const AllMealsDiv  = document.querySelector('#AllMeals')
   array.forEach(doc=>{
     // create new div with class = MenuItem
     const newMenuItem = document.createElement('div')
     newMenuItem.classList.add("MenuItem")
-
+    newMenuItem.setAttribute("data-id", doc.id)
     // new FoodItem Div
     const newFoodItem = document.createElement("div")
     newFoodItem.classList.add("FoodItem")
@@ -240,12 +240,11 @@ function GetMeals(array){
     MealSettings.classList.add("MealControls")
 
     MealSettings.innerHTML =`
-    <select name="MealStatus" id="MealStatus">
+    <select onchange="UpdateMealStatus(event)" name="MealStatus" id="MealStatus">
       <option value="Available" selected>Available</option>
       <option value="Unvailable">Unavailable</option>
     </select>
     `
-
     newMenuItem.appendChild(newFoodItem)
       newMenuItem.appendChild(MealSettings) 
     AllMealsDiv.appendChild(newMenuItem)
@@ -264,9 +263,24 @@ function UploadImage(imagesrc, filename){
 
     Imageref.child(filename).put(photo, metadata)
    .then(snapshot=>snapshot.ref.getDownloadURL())
-   .then(url=>{
-     console.log(url);
+   .then(
      alert("upload Successful")
-     
-   })
+     )
+}
+
+
+// updates meal status as set/updated by admin
+function  UpdateMealStatus(e){
+  const selectbtn = e.target;
+  const MenuItem = selectbtn.parentElement.parentElement;
+  let MealId = MenuItem.getAttribute("data-id")
+  console.log(MealId, selectbtn.value);
+
+  // use select btn to update meal status
+  // ensure the customer sees available meals only
+  // establish how the admin sees the orders with status === ordered only
+  // estblish how the admin updates the order status and  thus reflects on customer side
+  // sort  orders depepending on time they are made
+  
+  
 }

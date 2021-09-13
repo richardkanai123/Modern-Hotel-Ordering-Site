@@ -178,11 +178,19 @@ window.addEventListener("click", (e) => {
     let parentItem = e.target.parentElement;
     const MealID = parentItem.getAttribute("data-id")
   
-    const MealQuantity = parentItem.querySelector("#Quantity").value
+    let MealQuantity = parentItem.querySelector("#Quantity").value
+    if(MealQuantity==0){
+        return MealQuantity = 1;
+    }
+
+    console.log(MealQuantity);
     const MealUnitCost = parentItem.querySelector(".FoodItemCost").innerText
     const CalculatedCost = MealQuantity*Number(MealUnitCost)
   
-    console.log(MealQuantity,Number(MealUnitCost),MealQuantity*Number(MealUnitCost) ); 
+
+
+
+    // console.log(MealQuantity,Number(MealUnitCost),MealQuantity*Number(MealUnitCost) ); 
     let Customer = auth.currentUser;
   
     // customer side...
@@ -216,18 +224,14 @@ function UpdateCart(){
         doc.forEach(Order=>{
             // console.log(Order.data().OrderedMealID);
             const OrderedMealCode = Order.data().OrderedMealID;
-            // GetMealsUsingID();
             let OrderQuantity = Order.data().QuantityOrdered;
 
-            if(OrderQuantity==0){
-                return OrderQuantity = 1;
-            }
-
-            console.log(OrderQuantity);
             const OrderTotalCost  = Order.data().OrderCost;
             const OrderUnitCost = Order.data().UnitCost;
-
-            GetMealsUsingID(OrderedMealCode,OrderQuantity,OrderUnitCost,OrderTotalCost)
+            const OrderStatusNow = Order.data().OrderStatus;
+            
+            // gets meals by their id
+            GetMealsUsingID(Order.id,OrderedMealCode,OrderQuantity,OrderUnitCost,OrderTotalCost,OrderStatusNow)
         })
 
         
@@ -236,14 +240,15 @@ function UpdateCart(){
 }
 
 // get meal info and create a cart item using mealId
-
-function GetMealsUsingID(MealID,Quantity,PerUnit,AllCost){
+// status here means the orderstatus
+function GetMealsUsingID(OrderID, MealID,Quantity,PerUnit,AllCost, status){
    const Mealref = db.collection("Meals");
    Mealref.doc(MealID).get()
    .then(doc=>{
     const newMenuItem = document.createElement('div')
     newMenuItem.classList.add("MenuItem")
-
+    newMenuItem.setAttribute("data-id", OrderID)
+   
     // new FoodItem Div
     const NewCartFoodItem = document.createElement("div")
     NewCartFoodItem.classList.add("FoodItem")
@@ -258,17 +263,23 @@ function GetMealsUsingID(MealID,Quantity,PerUnit,AllCost){
       MealImage.src = url;
     })
 
-
-
-    newMenuItem.appendChild(MealImage)
-  
+    newMenuItem.appendChild(MealImage)  
     NewCartFoodItem.innerHTML += `
             <h5 class="ItemTitle">${doc.data().Name}</h5>
             <h4>Quantity: <span class="Quantity">${Quantity}</span> @ <span class="Unit Price">${PerUnit}</span></h4>
             <p class="Cost">Ksh.<span class="FoodItemCost">${AllCost}</span> </p>
-            <button class="OrderStatus">Order Now</button>
-                          
+                             
     `
+
+    const statusBtn = document.createElement("button")
+    statusBtn.classList.add("OrderStatus");
+    statusBtn.setAttribute("onclick", "SubmitOrder(event)");
+    statusBtn.innerText = status
+    if(status!== "In Cart"){
+        statusBtn.classList.add("Ordered")
+    }
+
+    NewCartFoodItem.appendChild(statusBtn)
     newMenuItem.appendChild(NewCartFoodItem)
     CustomerCart.appendChild(newMenuItem)
 
@@ -276,4 +287,35 @@ function GetMealsUsingID(MealID,Quantity,PerUnit,AllCost){
   .catch(err=>console.log(err));    
 }
 
+
+//Customer submits order
+function SubmitOrder(e){
+    const FoodHolder = e.target.parentElement;
+    const MenuItemHolder = FoodHolder.parentElement;
+
+    // ID of Ordered meal
+   let MealID = FoodHolder.getAttribute("data-id")
+
+    // ID of specific Order for certain meal with above ID
+   let OrderID = MenuItemHolder.getAttribute("data-id")
+    console.log(MealID, OrderID );
+    // get order by its Id and set status as Order placed,
+    UpdateOrderStatusToPlaced(OrderID)
+    .then(function () {
+        alert("Ordered. Please Wait for Processing....")
+    })
+
+}
+
+
+// updates the OrderStatus
+function UpdateOrderStatusToPlaced(id){
+    const Order = db.collection('Orders').doc(id)
+    return Order.update({
+        OrderStatus: "Ordered"
+    })
+}
+
+
+// 
 

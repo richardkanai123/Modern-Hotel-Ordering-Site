@@ -537,6 +537,25 @@ ul{
     pointer-events: none;
     font-size: 1.2rem;
 }
+
+
+.ModalOverlay .CustomerOrdersHolder{
+    width: 100%;
+}
+
+#CurrentOrders{
+    width: 99%;
+    display: flex;
+    /* border: solid #bc1823; */
+    overflow: scroll;
+}
+
+
+button.Ordered{
+    background: green;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 /* //////////////////////////////////////////////////small Screens.////////////////////////////////////////////// */
 @media (max-width:600px) {
     .Home{
