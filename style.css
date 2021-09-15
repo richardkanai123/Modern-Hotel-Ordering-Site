@@ -430,6 +430,7 @@ ul{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    display: none;
 }
 
 .OrdersPop{
@@ -439,6 +440,16 @@ ul{
     flex-wrap: wrap;
 }
 
+.OrdersPop .MenuItem{
+    height: fit-content;
+    padding:0.5rem ;
+    background:  var(--lightGrey) 50%;
+}
+
+
+.OrdersPop .MenuItem h3, .OrdersPop .MenuItem h4{
+    margin-bottom: 0.5rem;
+}
 .ModalOverlay{
     position: absolute;
     top: 10vh;
@@ -496,6 +507,7 @@ ul{
 #MakeAdminForm input,
 #AddNewMealForm input,
 #AddNewMealForm select,
+.MenuItem select,
 .AllMeals select{
     height: 3rem;
     margin: 0.5rem auto;

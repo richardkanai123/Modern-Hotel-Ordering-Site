@@ -19,6 +19,7 @@ auth.onAuthStateChanged(user => {
           .then(doc=>{
             const UserInfo = `
             <h3> ${doc.data().UName}</h3>
+            <h4> YourID: ${(auth.currentUser.uid).slice(0, 5)}</h4>
             <span>Email: <h5 id="MyUserEmail">${doc.data().umail}</h5></span>
             <div> ${user.admin? 'Admin Account': 'Customer  '} </div>
             `;
@@ -238,13 +239,26 @@ function GetMeals(array){
 
     const MealSettings = document.createElement('div')
     MealSettings.classList.add("MealControls")
+    const CurrentMealStatus = doc.data().Status
+    let OPPStatus;
+// gets opposite of current meal status
+    if(CurrentMealStatus === "Available"){
+       OPPStatus = "Unavailble"
+    } else{
+      OPPStatus = 'Available';
+    }
 
+    // selects according to status as set in the menu
     MealSettings.innerHTML =`
     <select onchange="UpdateMealStatus(event)" name="MealStatus" id="MealStatus">
-      <option value="Available" selected>Available</option>
-      <option value="Unvailable">Unavailable</option>
+      <option selected value = ${CurrentMealStatus}> ${CurrentMealStatus} </option>
+      <option value = ${OPPStatus} >
+      ${OPPStatus}
+      </option>
     </select>
     `
+
+
     newMenuItem.appendChild(newFoodItem)
       newMenuItem.appendChild(MealSettings) 
     AllMealsDiv.appendChild(newMenuItem)
@@ -274,13 +288,79 @@ function  UpdateMealStatus(e){
   const selectbtn = e.target;
   const MenuItem = selectbtn.parentElement.parentElement;
   let MealId = MenuItem.getAttribute("data-id")
-  console.log(MealId, selectbtn.value);
 
-  // use select btn to update meal status
-  // ensure the customer sees available meals only
-  // establish how the admin sees the orders with status === ordered only
-  // estblish how the admin updates the order status and  thus reflects on customer side
-  // sort  orders depepending on time they are made
-  
-  
+  // get meal by above meal id and set status to selectedbtn.value
+  const Meal = db.collection('Meals').doc(MealId)
+  return Meal.update({
+    Status: selectbtn.value
+  }).then(
+    alert(`Status Upfated to: ${selectbtn.value}` )
+  )   
 }
+
+// display customer orders on admin
+const AdminOrderList = document.querySelector(".OrdersPop")
+
+const OrdersRef = db.collection('Orders')
+OrdersRef.where("OrderStatus","!=","In Cart")
+  .onSnapshot((snapshot)=>{
+    let Orders = snapshot.docs;
+
+    Orders.map(Order=>{
+      const details = Order.data()
+      const NewOrderItem = document.createElement("div")
+      NewOrderItem.classList.add("MenuItem")
+      const FoodOrderItem = document.createElement("div")
+      FoodOrderItem.classList.add("FoodItem")
+      NewOrderItem.setAttribute("data-id", Order.id)
+      const OrderedMealNameDiv = document.createElement("h4")
+      
+      // get mealname
+      const Mealref = db.collection("Meals");
+      let OrderedMealName; 
+      Mealref.doc(details.OrderedMealID).get()
+      .then(doc=>{
+        OrderedMealName = doc.data().Name;
+        OrderedMealNameDiv.textContent = OrderedMealName;
+        NewOrderItem.append(OrderedMealNameDiv)
+      })
+      .then(()=>{
+        FoodOrderItem.innerHTML += `
+        <h3> Order by: ${(details.CustomerID).slice(0, 5)} </h3>
+        <h4>Quantity: <span class="Quantity">${details.QuantityOrdered}</span> @ <span class="Unit Price">${details.UnitCost}</span></h4>
+        <h4> Total: ${details.OrderCost}</h4>
+        <select name="OrderStatusUpdate" id="OrderStatusUpdate" onchange="AdminUpdateOrderStatus(event)">
+            <option value=${details.OrderStatus} selected>${details.OrderStatus}</option>
+            <option value="Preparing">Processing</option>
+            <option value="Ready! Please Collect">Ready</option>
+            <option value="Collected">Complete</option>
+        </select>
+        `
+
+        NewOrderItem.appendChild(FoodOrderItem);
+      })
+
+     AdminOrderList.appendChild(NewOrderItem)
+
+
+    }
+  )
+
+})
+
+function AdminUpdateOrderStatus(e){
+  const OrderItem = e.target.parentElement.parentElement
+  const OrderID = OrderItem.getAttribute("data-id")
+  const Ordersref = db.collection("Orders").doc(OrderID)
+  return Ordersref.update({
+    OrderStatus: e.target.value
+})
+.then(()=>{
+  location.reload()
+})
+.catch(err=>console.log(err))
+}
+
+
+// redesign admin panel ie CSS
+// ensure data does not duplicate when status is updated

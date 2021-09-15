@@ -22,7 +22,7 @@ const MenuList = document.querySelector(".MenuList")
 const MyOrdersTag = document.querySelector("#MyOrdersTag")
 const MyOrdersDiv = document.querySelector("#MyOrders")
 const CustomerCart = document.querySelector('#CurrentOrders')
-const AdminOrderList = document.querySelector(".OrdersPop")
+
 
 
 
@@ -120,6 +120,7 @@ const createMenuItem =(data)=>{
 
 function SortMenu(){
     const FoodCategoryOption = document.querySelector("#FoodCategory")
+    const AvailableMeals = db.collection('Meals').where("Status", "==", "Available")
     MenuList.innerHTML = "";
     if(FoodCategoryOption.value==="All"){
         db.collection('Meals').where("Status", "==", "Available").get()
@@ -127,27 +128,27 @@ function SortMenu(){
             createMenuItem(snapshot.docs)
         })
     }else if(FoodCategoryOption.value==="Drinks"){
-        db.collection('Meals').where("Category", "==", "Drinks").get()
+        AvailableMeals.where("Category", "==", "Drinks").get()
         .then(snapshot=>{
             createMenuItem(snapshot.docs)
         })
     } else if(FoodCategoryOption.value==="Pizza"){
-        db.collection('Meals').where("Category", "==", "Pizza").get()
+        AvailableMeals.where("Category", "==", "Pizza").get()
         .then(snapshot=>{
             createMenuItem(snapshot.docs)
         })
     }else if(FoodCategoryOption.value==="Meat"){
-        db.collection('Meals').where("Category", "==", "Meat").get()
+        AvailableMeals.where("Category", "==", "Meat").get()
         .then(snapshot=>{
             createMenuItem(snapshot.docs)
         })
     }else if(FoodCategoryOption.value==="Burger"){
-        db.collection('Meals').where("Category", "==", "Burger").get()
+        AvailableMeals.where("Category", "==", "Burger").get()
         .then(snapshot=>{
             createMenuItem(snapshot.docs)
         })
     }else if(FoodCategoryOption.value==="Rice"){
-        db.collection('Meals').where("Category", "==", "Rice").get()
+        AvailableMeals.where("Category", "==", "Rice").get()
         .then(snapshot=>{
             createMenuItem(snapshot.docs)
         })
@@ -216,13 +217,14 @@ window.addEventListener("click", (e) => {
   }
   
 // Customer's Cart; Fetches orders from firestore and only displays what the user has put in cart
+const OrdersList = db.collection('Orders');
 function UpdateCart(){
+    // CustomerCart.innerHTML = ``;
+    // CustomerCart.reload();
+
     const Customer = auth.currentUser;
-    const OrdersList = db.collection('Orders');
-    OrdersList.where("CustomerID", "==", `${Customer.uid}`).get()
-    .then(doc=>{
+    OrdersList.where("CustomerID", "==", `${Customer.uid}`).get().then(doc=>{
         doc.forEach(Order=>{
-            // console.log(Order.data().OrderedMealID);
             const OrderedMealCode = Order.data().OrderedMealID;
             let OrderQuantity = Order.data().QuantityOrdered;
 
@@ -236,13 +238,13 @@ function UpdateCart(){
 
         
     })  
-    .catch(err=>console.log(err));
+    // .catch(err=>console.log(err));
 }
 
 // get meal info and create a cart item using mealId
 // status here means the orderstatus
 function GetMealsUsingID(OrderID, MealID,Quantity,PerUnit,AllCost, status){
-   const Mealref = db.collection("Meals");
+    const Mealref = db.collection("Meals");
    Mealref.doc(MealID).get()
    .then(doc=>{
     const newMenuItem = document.createElement('div')
@@ -284,7 +286,7 @@ function GetMealsUsingID(OrderID, MealID,Quantity,PerUnit,AllCost, status){
     CustomerCart.appendChild(newMenuItem)
 
   })
-  .catch(err=>console.log(err));    
+  .catch(err=>console.log(err))
 }
 
 
@@ -300,7 +302,7 @@ function SubmitOrder(e){
    let OrderID = MenuItemHolder.getAttribute("data-id")
     console.log(MealID, OrderID );
     // get order by its Id and set status as Order placed,
-    UpdateOrderStatusToPlaced(OrderID)
+    UpdateOrderStatus(OrderID)
     .then(function () {
         alert("Ordered. Please Wait for Processing....")
     })
@@ -309,13 +311,12 @@ function SubmitOrder(e){
 
 
 // updates the OrderStatus
-function UpdateOrderStatusToPlaced(id){
+function UpdateOrderStatus(id){
     const Order = db.collection('Orders').doc(id)
     return Order.update({
         OrderStatus: "Ordered"
-    })
+    }).catch(err=>console.log(err))
 }
 
 
-// 
 
