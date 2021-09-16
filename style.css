@@ -102,7 +102,7 @@ a:hover{
 }
 
 .Home .DisplayImage{
-    background-image: url(./Images/meat.png);
+    background-image: url(./meat.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -123,7 +123,7 @@ a:hover{
 }
 
 .About .DisplayImage{
-    background-image: url(./Images/Hambergur1.png);
+    background-image: url(./Hambergur1.png);
 }
 
 .About .Content{
@@ -306,7 +306,7 @@ select optgroup{
 }
 
 .Contact .DisplayImage{
-    background-image: url(./Images/Yummy.png);
+    background-image: url(./Yummy.png);
 }
 
 .ContactInfo{
@@ -525,16 +525,9 @@ ul{
     font-size: 1.2rem;
 }
 
-/* .MyOrders{
-    align-self: center;
-    width: 80vw;
+.MyOrders{
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--redColor);
-    padding:0.25rem;
-} */
+}
 
 .MyOrders .MenuItem{
     height: fit-content;
@@ -653,7 +646,7 @@ button.Ordered{
     }
     
     .Home .DisplayImage{
-        background-image: url(./Images/meat.png);
+        background-image: url(./meat.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
