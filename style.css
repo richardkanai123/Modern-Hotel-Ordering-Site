@@ -406,7 +406,7 @@ ul{
 }
 
 .AdminNavigation .button.link{
-    background: #06d8229c;
+    background:unset;
     width: 100%;
     text-align: center;
     color: #bc1823;
@@ -453,15 +453,20 @@ ul{
 .ModalOverlay{
     position: absolute;
     top: 10vh;
-    left: 5%;
+    left: 10%;
+    right: 50%;
+    /* transform: translateX(-50%); */
     padding: 0.5rem;
-    /* height: fit-content; */
-    width: fit-content;
+    min-width: 300px;
+    max-width: fit-content;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(107, 107, 107, 0.87);
+    align-self: center;
+    background: linear-gradient(90deg, white, grey);
+    border-radius: 20px;
+    border: solid 1px;
 }
 
 
@@ -520,26 +525,16 @@ ul{
     font-size: 1.2rem;
 }
 
-.MyOrders{
+/* .MyOrders{
     align-self: center;
     width: 80vw;
-    margin: auto;
-    /* border: solid red; */
     display: none;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     color: var(--redColor);
     padding:0.25rem;
-}
-
-.MyOrders .MyOrdersHeader{
-    margin-bottom: 0.5rem;
-    width: 100%;
-    text-align:center;
-    border-bottom: 2px solid black; 
-}
-
+} */
 
 .MyOrders .MenuItem{
     height: fit-content;
@@ -551,14 +546,17 @@ ul{
 }
 
 
-.ModalOverlay .CustomerOrdersHolder{
+.ModalOverlay .MyOrders{
     width: 100%;
+    display: flex;
+    align-self: center;
+    border: solid;
+    margin: auto;
+    overflow-x:scroll;
 }
-
 #CurrentOrders{
     width: 99%;
     display: flex;
-    /* border: solid #bc1823; */
     overflow: scroll;
 }
 
@@ -740,6 +738,7 @@ button.Ordered{
         width: 100%;
         margin: 0.5rem;
     }
+
 
     #ScrollTop{
         position: fixed;

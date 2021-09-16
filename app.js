@@ -21,7 +21,7 @@ const AddNewMealTag = document.querySelector("#AddNewMealTag")
 const MenuList = document.querySelector(".MenuList")
 const MyOrdersTag = document.querySelector("#MyOrdersTag")
 const MyOrdersDiv = document.querySelector("#MyOrders")
-const CustomerCart = document.querySelector('#CurrentOrders')
+const CustomerCart = document.querySelector('#CustomerOrdersHolder')
 
 
 
@@ -184,7 +184,6 @@ window.addEventListener("click", (e) => {
         return MealQuantity = 1;
     }
 
-    console.log(MealQuantity);
     const MealUnitCost = parentItem.querySelector(".FoodItemCost").innerText
     const CalculatedCost = MealQuantity*Number(MealUnitCost)
   
@@ -219,9 +218,6 @@ window.addEventListener("click", (e) => {
 // Customer's Cart; Fetches orders from firestore and only displays what the user has put in cart
 const OrdersList = db.collection('Orders');
 function UpdateCart(){
-    // CustomerCart.innerHTML = ``;
-    // CustomerCart.reload();
-
     const Customer = auth.currentUser;
     OrdersList.where("CustomerID", "==", `${Customer.uid}`).get().then(doc=>{
         doc.forEach(Order=>{
@@ -238,7 +234,7 @@ function UpdateCart(){
 
         
     })  
-    // .catch(err=>console.log(err));
+    .catch(err=>console.log(err));
 }
 
 // get meal info and create a cart item using mealId
@@ -283,7 +279,7 @@ function GetMealsUsingID(OrderID, MealID,Quantity,PerUnit,AllCost, status){
 
     NewCartFoodItem.appendChild(statusBtn)
     newMenuItem.appendChild(NewCartFoodItem)
-    CustomerCart.appendChild(newMenuItem)
+    MyOrdersDiv.appendChild(newMenuItem)
 
   })
   .catch(err=>console.log(err))
@@ -304,7 +300,10 @@ function SubmitOrder(e){
     // get order by its Id and set status as Order placed,
     UpdateOrderStatus(OrderID)
     .then(function () {
-        alert("Ordered. Please Wait for Processing....")
+        alert("Ordered. Please Wait for Processing....");
+        e.innerText = "Ordered"
+        e.disabled = true;
+
     })
 
 }

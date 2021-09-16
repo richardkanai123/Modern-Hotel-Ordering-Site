@@ -294,7 +294,7 @@ function  UpdateMealStatus(e){
   return Meal.update({
     Status: selectbtn.value
   }).then(
-    alert(`Status Upfated to: ${selectbtn.value}` )
+    alert(`Status Upated to: ${selectbtn.value}` )
   )   
 }
 
@@ -303,9 +303,8 @@ const AdminOrderList = document.querySelector(".OrdersPop")
 
 const OrdersRef = db.collection('Orders')
 OrdersRef.where("OrderStatus","!=","In Cart")
-  .onSnapshot((snapshot)=>{
+  .get().then((snapshot)=>{
     let Orders = snapshot.docs;
-
     Orders.map(Order=>{
       const details = Order.data()
       const NewOrderItem = document.createElement("div")
@@ -355,9 +354,9 @@ function AdminUpdateOrderStatus(e){
   return Ordersref.update({
     OrderStatus: e.target.value
 })
-.then(()=>{
-  location.reload()
-})
+// .then(()=>{
+//   location.reload()
+// })
 .catch(err=>console.log(err))
 }
 
