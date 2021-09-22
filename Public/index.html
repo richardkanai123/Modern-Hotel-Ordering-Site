@@ -195,60 +195,53 @@
     <!-- admin Panel -->
 
     <div class="AdminSection" id="AdminSection">
-        <div class="PanelHeader">
-            <h2>Admin Panel</h2>
-        </div>
         <!-- admin control panel -->
-        <div class="AdminNavigation">
-            <h3>Navigation</h3>
+        <div class="AdminNavigation">'
+            <img src="./admin.png" alt="adminicon">
             <a id="OrdersView" class="button link" href="#OrdersPop">Orders</a>
-            <a id="CompletedOrders" class="button link">Completed Orders</a>
+            <a id="CompletedOrdersTag" href="#CompletedOrders" class="button link">Completed Orders</a>
             <a id="ViewMealsTag" href="#AllMeals" class="button link">All Meals</a>
             <a id="AddNewMealTag" href="#AddNewMealForm" class="button link">Add New Meal</a>
             <a id="AddNewAdminTag" class="button link">Add New Admin</a>
             <button type="submit" id="LogOutBtn">Log Out</button>
         </div>
 
-
        <div class="AdminItemsHolder">
-
             <!-- orders placed by customers -->
             <div class="OrdersPop" id="OrdersPop">
-                <!-- <h3>Customer Orders</h3> done form firebase -->
-
+                 <!-- <h3>Customer Orders</h3> done form firebase -->
             </div>
-                
+            <div class="CompletedOrders" id="CompletedOrders">
+                <!-- List of Completed Orders -->
+            </div>
+
             <!-- all meals in the hotel -->
-
-
             <div class="AllMeals" id="AllMeals">
                 <!-- gets data for all available meals -->
-
             </div>
-
-            <!-- Add  a meal form -->
-
-            <form id="AddNewMealForm">
-                <h3>New Meal Entry</h3>
-                <input type="file" name="MealPic" id="MealPic" accept="image/*" required>
-                <input type="text" placeholder="EnterMealName" id="MealName" name="MealName" required>
-                <input type="text" name="MealDescription" id="MealDescription" placeholder="Meal Description" required>
-                <input type="number" name="UnitPrice" id="UnitPrice" placeholder="Price per unit" required>
-                <select name="MealCategory" id="MealCategory" required>
-                    <option value="Burger">Burger</option>
-                    <option value="Rice">Rice</option>
-                    <option value="Drinks">Drinks</option>
-                    <option value="Pizza">Pizza</option>
-                    <option value="Meat">Meat</option>
-                </select>
-                <button type="submit">Add New</button>
-            </form>
        </div>
 
     </div>
 
+    <!-- Add  a meal form -->
+    
+    <form id="AddNewMealForm">
+        <h3>New Meal Entry</h3>
+        <input type="file" name="MealPic" id="MealPic" accept="image/*" required>
+        <input type="text" placeholder="EnterMealName" id="MealName" name="MealName" required>
+        <input type="text" name="MealDescription" id="MealDescription" placeholder="Meal Description" required>
+        <input type="number" name="UnitPrice" id="UnitPrice" placeholder="Price per unit" required>
+        <select name="MealCategory" id="MealCategory" required>
+            <option value="Burger">Burger</option>
+            <option value="Rice">Rice</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Meat">Meat</option>
+        </select>
+        <button type="submit">Add New</button>
+    </form>
+    
     <!-- end of admin panel -->
-
 
 
     <!-- modal set ups -->

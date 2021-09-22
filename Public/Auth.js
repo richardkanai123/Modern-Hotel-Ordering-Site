@@ -11,7 +11,9 @@ auth.onAuthStateChanged(user => {
               AdminItems.style.display="flex";
               NonAdminDivs.forEach(div=>{
                 div.style.display = "none"
-              })
+              });
+              ShowAdminOrders();
+              GetCompletedOrders();
             }
         })
         // Create Account Section
@@ -243,7 +245,7 @@ function GetMeals(array){
     let OPPStatus;
 // gets opposite of current meal status
     if(CurrentMealStatus === "Available"){
-       OPPStatus = "Unavailble"
+       OPPStatus = "Unavailable"
     } else{
       OPPStatus = 'Available';
     }
@@ -301,9 +303,10 @@ function  UpdateMealStatus(e){
 // display customer orders on admin
 const AdminOrderList = document.querySelector(".OrdersPop")
 
-const OrdersRef = db.collection('Orders')
-OrdersRef.where("OrderStatus","!=","In Cart")
-  .get().then((snapshot)=>{
+function ShowAdminOrders(){
+  const OrdersRef = db.collection('Orders')
+const PendingOrders = OrdersRef.where("OrderStatus","not-in",["Collected", "In Cart"])
+PendingOrders.get().then((snapshot)=>{
     let Orders = snapshot.docs;
     Orders.map(Order=>{
       const details = Order.data()
@@ -331,7 +334,7 @@ OrdersRef.where("OrderStatus","!=","In Cart")
         <select name="OrderStatusUpdate" id="OrderStatusUpdate" onchange="AdminUpdateOrderStatus(event)">
             <option value=${details.OrderStatus} selected>${details.OrderStatus}</option>
             <option value="Preparing">Processing</option>
-            <option value="Ready! Please Collect">Ready</option>
+            <option value="Ready">Ready</option>
             <option value="Collected">Complete</option>
         </select>
         `
@@ -346,6 +349,7 @@ OrdersRef.where("OrderStatus","!=","In Cart")
   )
 
 })
+}
 
 function AdminUpdateOrderStatus(e){
   const OrderItem = e.target.parentElement.parentElement
@@ -353,13 +357,54 @@ function AdminUpdateOrderStatus(e){
   const Ordersref = db.collection("Orders").doc(OrderID)
   return Ordersref.update({
     OrderStatus: e.target.value
-})
-// .then(()=>{
-//   location.reload()
-// })
-.catch(err=>console.log(err))
+  })
+  .then(()=>{
+    GetCompletedOrders();
+    })
+    .catch(err=>console.log(err))
+  }
+  
+  // div showing completed orders only
+  
+  const CompletedOrdersDiv = document.querySelector("#CompletedOrders")
+  function GetCompletedOrders(){
+    db.collection("Orders").where("OrderStatus","==","Collected")
+    .onSnapshot((snapshot)=>{
+    let Orders = snapshot.docs;
+    Orders.map(Order=>{
+      const details = Order.data()
+      const NewOrderItem = document.createElement("div")
+      NewOrderItem.classList.add("MenuItem")
+      const FoodOrderItem = document.createElement("div")
+      FoodOrderItem.classList.add("FoodItem")
+      NewOrderItem.setAttribute("data-id", Order.id)
+      const OrderedMealNameDiv = document.createElement("h4")
+      
+      // get mealname
+      const Mealref = db.collection("Meals");
+      let OrderedMealName; 
+      Mealref.doc(details.OrderedMealID).get()
+      .then(doc=>{
+        OrderedMealName = doc.data().Name;
+        OrderedMealNameDiv.textContent = OrderedMealName;
+        NewOrderItem.append(OrderedMealNameDiv)
+      })
+      .then(()=>{
+        FoodOrderItem.innerHTML += `
+        <h3> Order by: ${(details.CustomerID).slice(0, 5)} </h3>
+        <h4>Quantity: <span class="Quantity">${details.QuantityOrdered}</span> @ <span class="Unit Price">${details.UnitCost}</span></h4>
+        <h4> Total: ${details.OrderCost}</h4>
+        `
+
+        NewOrderItem.appendChild(FoodOrderItem);
+      })
+
+      CompletedOrdersDiv.append(NewOrderItem)
+
+
+    }
+  )
+
+  })
 }
 
-
-// redesign admin panel ie CSS
-// ensure data does not duplicate when status is updated

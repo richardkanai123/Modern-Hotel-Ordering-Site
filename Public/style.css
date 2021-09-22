@@ -337,6 +337,7 @@ select optgroup{
     color: var(--redColor);
     font-size: 2rem;
     cursor: pointer;
+    z-index: 10;
     animation: blink 1s  0.5s infinite alternate ease;
 }
 
@@ -360,31 +361,71 @@ ul{
 /* admin panel styling */
 .AdminSection{
     width: 100%;
-    display: none;
-    background: rgb(239,239,239);
-    /* background: linear-gradient(45deg, rgba(239,239,239,1) 50%, rgba(188,24,35,1) 50%); */
-    padding: 3rem 0rem;
-    margin-top: 1rem;
-    /* align-items: center; */
-    text-align: center;
-    /* justify-content: space-between; */
-    overflow: hidden;
+    display: flex;
     position: relative;
-
+    border: solid red;
+    justify-content: center;
+    
 }
-
-.PanelHeader{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    color: var(--redColor);
-}
-
-/* .NonAdmin{
-    display: none;
-} */
 
 .AdminNavigation{
+    position: sticky;
+    top:0;
+    width: 20%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-start;
+    background: var(--lightGrey);
+    box-shadow: 0 8px 32px 0 rgba(58, 70, 228, 0.37);
+    backdrop-filter: blur( 4px );   
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    align-items: left;
+    text-align: left;
+    padding: 0.5rem;
+    border: solid pink;
+}
+
+
+
+.AdminNavigation img{
+    align-self: center;
+    width: 50px;
+    height: 50px;
+}
+
+.AdminNavigation .button.link{
+    background:unset;
+    width: 100%;
+    text-align: center;
+    color: #bc1823;
+}
+
+.AdminItemsHolder{
+    overflow: scroll;
+    width: 80%;
+    background: #33333323;
+    padding: 0.25rem;
+    position: sticky;
+    z-index: 1;
+    left: 20%;
+}
+
+.AdminSection .OrdersPop,
+.AdminSection .AllMeals,
+.AdminSection .CompletedOrders
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-bottom: solid black;
+}
+.AdminSection .CompletedOrders{
+    border: solid blue;
+}
+/* .AdminNavigation{
     width: 20%;
     min-height: 100vh;
     max-height: 100%;
@@ -396,13 +437,27 @@ ul{
     backdrop-filter: blur( 4px );   
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    padding:1rem 0.25rem;
     align-items: left;
     text-align: left;
+    position: fixed;
+    padding: 0.5rem;
 }
-.AdminNavigation h3{
-    text-align: center;
-    
+.AdminNavigation img{
+    align-self: center;
+    width: 50px;
+    height: 50px;
+}
+
+.AdminNavigation span{
+    position: absolute;
+    right: 5%;
+    top: 0;
+    cursor: pointer;
+}
+
+.AdminNavigation span img{
+    width: 30px;
+    height: 30px;
 }
 
 .AdminNavigation .button.link{
@@ -419,25 +474,28 @@ ul{
 }
 
 .AdminItemsHolder{
+    overflow: scroll;
     width: 80%;
     background: #33333323;
     padding: 0.25rem;
-    /* height: 100vh; */
-    /* overflow: scroll; */
+    position: sticky;
+    z-index: 1;
+    left: 20%;
 }
 
 .AllMeals{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    display: none;
+    justify-content: space-around;
 }
 
 .OrdersPop{
     width: 100%;
-    margin: 1rem 0;
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
+    border-bottom: solid black;
 }
 
 .OrdersPop .MenuItem{
@@ -449,7 +507,7 @@ ul{
 
 .OrdersPop .MenuItem h3, .OrdersPop .MenuItem h4{
     margin-bottom: 0.5rem;
-}
+} */
 .ModalOverlay{
     position: absolute;
     top: 10vh;
@@ -738,5 +796,13 @@ button.Ordered{
         bottom: 5%;
         left: 80%;
     }
+
+
+    .AdminNavigation{
+        padding: 0.25rem;
+    }
     
+    .AdminNavigation a{
+        font-size: 10px;
+    }
 }

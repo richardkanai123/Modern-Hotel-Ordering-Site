@@ -216,7 +216,7 @@ window.addEventListener("click", (e) => {
   }
   
 // Customer's Cart; Fetches orders from firestore and only displays what the user has put in cart
-const OrdersList = db.collection('Orders');
+const OrdersList = db.collection('Orders').orderBy("OrderTime", "desc");
 function UpdateCart(){
     const Customer = auth.currentUser;
     OrdersList.where("CustomerID", "==", `${Customer.uid}`).get().then(doc=>{
@@ -301,8 +301,8 @@ function SubmitOrder(e){
     UpdateOrderStatus(OrderID)
     .then(function () {
         alert("Ordered. Please Wait for Processing....");
-        e.innerText = "Ordered"
-        e.disabled = true;
+        e.target.innerText = "Ordered"
+        e.target.disabled = true;
 
     })
 
