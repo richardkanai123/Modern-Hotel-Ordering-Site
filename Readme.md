@@ -1,4 +1,4 @@
-# Hotel Ordering Site
+# Hotel Food  Ordering Site
 
 Hosted at: https://sundaybitesite.web.app/
 
