@@ -360,10 +360,9 @@ ul{
 
 /* admin panel styling */
 .AdminSection{
-    width: 100%;
-    display: flex;
+    width: 99%;
+    display: none;
     position: relative;
-    border: solid red;
     justify-content: center;
     
 }
@@ -422,98 +421,21 @@ ul{
     flex-wrap: wrap;
     border-bottom: solid black;
 }
-.AdminSection .CompletedOrders{
-    border: solid blue;
-}
-/* .AdminNavigation{
-    width: 20%;
-    min-height: 100vh;
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-self: flex-start;
-    background: var(--lightGrey);
-    box-shadow: 0 8px 32px 0 rgba(58, 70, 228, 0.37);
-    backdrop-filter: blur( 4px );   
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    align-items: left;
-    text-align: left;
-    position: fixed;
-    padding: 0.5rem;
-}
-.AdminNavigation img{
-    align-self: center;
-    width: 50px;
-    height: 50px;
-}
 
-.AdminNavigation span{
-    position: absolute;
-    right: 5%;
-    top: 0;
-    cursor: pointer;
-}
-
-.AdminNavigation span img{
-    width: 30px;
-    height: 30px;
-}
-
-.AdminNavigation .button.link{
-    background:unset;
-    width: 100%;
-    text-align: center;
-    color: #bc1823;
-}
-
-.AdminNavigation .button.link:hover,
-.AdminNavigation .button.link:active{
-    background: unset;
-    color: #06d8229c;
-}
-
-.AdminItemsHolder{
-    overflow: scroll;
-    width: 80%;
-    background: #33333323;
-    padding: 0.25rem;
-    position: sticky;
-    z-index: 1;
-    left: 20%;
-}
-
-.AllMeals{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.OrdersPop{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    border-bottom: solid black;
-}
-
-.OrdersPop .MenuItem{
+.AdminSection .MenuItem{
     height: fit-content;
-    padding:0.5rem ;
-    background:  var(--lightGrey) 50%;
+    padding: 1rem 0.5rem;
+    border-radius: 14px;
+    background: #efefef;
+    box-shadow: inset 14px 14px 28px #948f8f,
+            inset 14px -14px 28px #ffffff;
 }
 
-
-.OrdersPop .MenuItem h3, .OrdersPop .MenuItem h4{
-    margin-bottom: 0.5rem;
-} */
 .ModalOverlay{
     position: absolute;
     top: 10vh;
     left: 10%;
     right: 50%;
-    /* transform: translateX(-50%); */
     padding: 0.5rem;
     min-width: 300px;
     max-width: fit-content;
@@ -524,7 +446,6 @@ ul{
     align-self: center;
     background: linear-gradient(90deg, white, grey);
     border-radius: 20px;
-    border: solid 1px;
 }
 
 

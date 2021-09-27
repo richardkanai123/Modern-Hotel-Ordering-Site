@@ -208,7 +208,7 @@ AddNewMealForm.addEventListener('submit',(e)=>{
 
 
 // Get All meals from firestore to customer section
-  db.collection("Meals").get().then(snapshot=>{
+  MealsRef.get().then(snapshot=>{
     GetMeals(snapshot.docs)
   })
 
@@ -354,7 +354,7 @@ PendingOrders.get().then((snapshot)=>{
 function AdminUpdateOrderStatus(e){
   const OrderItem = e.target.parentElement.parentElement
   const OrderID = OrderItem.getAttribute("data-id")
-  const Ordersref = db.collection("Orders").doc(OrderID)
+  const Ordersref = OrdersRef.doc(OrderID)
   return Ordersref.update({
     OrderStatus: e.target.value
   })
@@ -368,7 +368,7 @@ function AdminUpdateOrderStatus(e){
   
   const CompletedOrdersDiv = document.querySelector("#CompletedOrders")
   function GetCompletedOrders(){
-    db.collection("Orders").where("OrderStatus","==","Collected")
+    OrdersRef.where("OrderStatus","==","Collected")
     .onSnapshot((snapshot)=>{
     let Orders = snapshot.docs;
     Orders.map(Order=>{

@@ -155,17 +155,6 @@ function SortMenu(){
     }
 }
 
-// remove completed order from Admin Panel
-// window.addEventListener("click", (e) => {
-//     if (e.target.id === "ArchiveOrder") {
-//         let ParentMenu = e.target.parentElement.parentElement;
-//         console.log(ParentMenu);
-//         ParentMenu.remove();
-//     }
-// })
-
-
-
 // place order Orders Collection in database
 window.addEventListener("click", (e) => {
     if (e.target.classList == "OrderItemBtn") {
@@ -216,7 +205,7 @@ window.addEventListener("click", (e) => {
   }
   
 // Customer's Cart; Fetches orders from firestore and only displays what the user has put in cart
-const OrdersList = db.collection('Orders').orderBy("OrderTime", "desc");
+
 function UpdateCart(){
     const Customer = auth.currentUser;
     OrdersList.where("CustomerID", "==", `${Customer.uid}`).get().then(doc=>{
@@ -240,8 +229,7 @@ function UpdateCart(){
 // get meal info and create a cart item using mealId
 // status here means the orderstatus
 function GetMealsUsingID(OrderID, MealID,Quantity,PerUnit,AllCost, status){
-    const Mealref = db.collection("Meals");
-   Mealref.doc(MealID).get()
+   MealsRef.doc(MealID).get()
    .then(doc=>{
     const newMenuItem = document.createElement('div')
     newMenuItem.classList.add("MenuItem")

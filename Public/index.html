@@ -194,9 +194,9 @@
 
     <!-- admin Panel -->
 
-    <div class="AdminSection" id="AdminSection">
+    <div class="AdminSection Admin" id="AdminSection">
         <!-- admin control panel -->
-        <div class="AdminNavigation">'
+        <div class="AdminNavigation">
             <img src="./admin.png" alt="adminicon">
             <a id="OrdersView" class="button link" href="#OrdersPop">Orders</a>
             <a id="CompletedOrdersTag" href="#CompletedOrders" class="button link">Completed Orders</a>
@@ -332,6 +332,9 @@
         const storage = firebase.storage();
         const storageRef = storage.ref();
         const Imageref = storageRef.child('images')
+        const OrdersRef = db.collection("Orders");
+        const MealsRef = db.collection("Meals");
+        const OrdersList = db.collection('Orders')
          
     </script>
     <script src="Auth.js"></script>
